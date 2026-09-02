@@ -1,0 +1,8094 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+
+:root {
+  /* ==========================================================
+     COLORS
+  ========================================================== */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark-grey: #424d4f;
+  --color-deep-green: #183336;
+
+  /* Brand */
+  --color-primary: #046363;
+
+  /* Navigation Active Gradient */
+  --color-nav-gradient-start: #1fb8c0;
+  --color-nav-gradient-end: #127a66;
+
+  /* ==========================================================
+     TYPOGRAPHY
+  ========================================================== */
+
+  --font-primary: "Inter", Arial, Helvetica, sans-serif;
+
+  /* Navigation */
+  --nav-font-size: 16px;
+  --nav-font-weight: 400;
+  --nav-line-height: 1;
+
+  /* Navbar Buttons */
+  --button-font-size: 16px;
+  --button-font-weight: 600;
+  --button-line-height: 1;
+
+  /* ==========================================================
+     PAGE / CONTAINER
+  ========================================================== */
+
+  --page-desktop-width: 1440px;
+  --container-desktop: 1140px;
+  --container-side-space: 32px;
+
+  /* ==========================================================
+     NAVBAR
+  ========================================================== */
+
+  --navbar-height: 108px;
+  --navbar-content-height: 51px;
+  --navbar-main-gap: 70px;
+
+  /* Navigation */
+  --navbar-nav-height: 44px;
+  --navbar-nav-gap: 26px;
+  --nav-item-padding-x: 10px;
+  --nav-active-border-width: 2px;
+
+  /* Navbar Actions */
+  --navbar-actions-gap: 16px;
+
+  /* Navbar Buttons */
+  --button-height: 51px;
+  --button-radius: 10px;
+
+  --button-padding-y: 16px;
+  --button-padding-x: 24px;
+
+  --button-border-width: 1px;
+
+  --button-login-width: 132px;
+  --button-contact-width: 139px;
+
+  /* Navbar Shadow */
+  --navbar-shadow:
+    0 4px 35.6px 2px rgb(0 0 0 / 10%);
+
+    /* ============================================================
+   NAVBAR RESPONSIVE
+============================================================ */
+
+/* Hamburger desktop par hidden */
+.navbar-menu-button {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.navbar-menu-button span {
+  width: 24px;
+  height: 2px;
+
+  display: block;
+
+  background: var(--color-deep-green);
+
+  border-radius: 10px;
+
+  transition: 0.25s ease;
+}
+
+
+/* Mobile menu desktop par hidden */
+
+.navbar-mobile-menu {
+  display: none;
+}
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 900px) {
+  .site-navbar {
+    height: 72px;
+  }
+
+  .navbar-inner {
+    width: calc(100% - 32px);
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-logo img {
+    height: 42px;
+    width: auto;
+  }
+
+  /* Desktop nav hide */
+  .navbar-nav,
+  .navbar-actions {
+    display: none;
+  }
+
+  /* Hamburger */
+  .navbar-menu-button {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+  }
+
+  .navbar-menu-button span {
+    width: 24px;
+    height: 2px;
+
+    display: block;
+
+    background: var(--color-deep-green);
+    border-radius: 10px;
+
+    transition: 0.25s ease;
+  }
+
+  .navbar-menu-button.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar-menu-button.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-menu-button.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile dropdown */
+  .navbar-mobile-menu {
+    position: absolute;
+
+    top: 72px;
+    left: 0;
+
+    width: 100%;
+
+    padding: 0 20px 22px;
+
+    display: none;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    box-shadow: 0 12px 25px rgb(0 0 0 / 8%);
+  }
+
+  .navbar-mobile-menu.open {
+    display: flex;
+  }
+
+  .navbar-mobile-nav {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-mobile-link {
+    width: 100%;
+
+    padding: 14px 0;
+
+    display: block;
+
+    border-bottom: 1px solid rgb(66 77 79 / 12%);
+
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+
+    color: var(--color-black);
+  }
+
+  .navbar-mobile-actions {
+    width: 100%;
+
+    margin-top: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .navbar-mobile-actions .ds-button {
+    width: 100%;
+    height: 46px;
+
+    font-size: 14px;
+  }
+}
+
+  /* ==========================================================
+     HERO LAYOUT
+  ========================================================== */
+
+  --hero-height: 1279px;
+
+  --hero-content-width: 925px;
+  --hero-content-top: 86.05px;
+  --hero-content-gap: 40px;
+
+  /* ==========================================================
+     HERO HEADING
+  ========================================================== */
+
+  --hero-heading-width: 925px;
+
+  --hero-heading-size: 72px;
+  --hero-heading-weight: 400;
+  --hero-heading-line-height: 1.2;
+
+  --hero-heading-color: var(--color-deep-green);
+
+  /* ==========================================================
+     HERO DESCRIPTION
+  ========================================================== */
+
+  --hero-description-width: 769.3px;
+
+  --hero-description-size: 18px;
+  --hero-description-weight: 300;
+  --hero-description-line-height: 29px;
+
+  --hero-description-color: var(--color-dark-grey);
+
+  --hero-description-top-space: 12px;
+
+  /* ==========================================================
+     HERO FORM
+  ========================================================== */
+
+  --hero-form-wrapper-width: 556px;
+  --hero-form-wrapper-padding: 10px;
+
+  --hero-form-width: 536px;
+  --hero-form-height: 56px;
+
+  --hero-form-radius: 12px;
+
+  --hero-form-border-width: 1px;
+  --hero-form-border-color: rgb(66 77 79 / 35%);
+
+  /* ==========================================================
+     HERO INPUT
+  ========================================================== */
+
+  --hero-input-padding-x: 18px;
+
+  --hero-input-size: 18px;
+  --hero-input-weight: 300;
+  --hero-input-line-height: 29px;
+
+  --hero-input-color: var(--color-dark-grey);
+
+  /* ==========================================================
+     HERO CTA
+  ========================================================== */
+
+  --hero-submit-width: 163px;
+
+  --hero-submit-size: 20px;
+  --hero-submit-weight: 500;
+  --hero-submit-line-height: 28px;
+
+  --hero-submit-bg: var(--color-deep-green);
+  --hero-submit-color: var(--color-white);
+
+  /* ==========================================================
+     HERO VISUAL
+  ========================================================== */
+
+  --hero-visual-width: 1140px;
+  --hero-visual-top-space: 22px;
+  --hero-visual-min-height: 560px;
+
+  /* Center calendar */
+ --hero-recording-width: 920px;
+  --hero-recording-height: 514px;
+
+  /* Left booking card */
+  --hero-booking-width: 343.49px;
+  --hero-booking-height: 489.74px;
+  --hero-booking-opacity: 1;
+  --hero-booking-left: -5px;
+  --hero-booking-top: 135px;
+
+  /* Right recording card */
+  --hero-recording-width: 920px;
+  --hero-recording-height: 514px;
+  --hero-recording-opacity: 0.95;
+  --hero-recording-right: -8px;
+  --hero-recording-top: 125px;
+
+  /* Layers */
+  --hero-calendar-z-index: 3;
+  --hero-side-card-z-index: 1;
+
+  /* ==========================================================
+     HERO BACKGROUND
+  ========================================================== */
+
+  --hero-gradient-white-start: rgb(255 255 255 / 39%);
+  --hero-gradient-cyan: rgb(164 228 231 / 27%);
+  --hero-gradient-white-end: rgb(255 255 255 / 73%);
+
+    /* ==========================================================
+     CALENDAR CONNECTED SECTION
+  ========================================================== */
+
+  /* Section */
+  --calendar-section-height: 700px;
+  --calendar-section-bg: #ffffff;
+
+  /* Left visual - Figma Group 1038 */
+  --calendar-visual-width: 665px;
+  --calendar-visual-height: 517px;
+  --calendar-visual-top: 91.5px;
+
+  /* Right content - Figma */
+ --calendar-content-width: 570px;
+  --calendar-content-height: 495px;
+  --calendar-content-top: 102.5px;
+  --calendar-content-left: 730px;
+
+  /* Eyebrow */
+  --calendar-eyebrow-width: 115px;
+  --calendar-eyebrow-height: 40px;
+  --calendar-eyebrow-border-width: 1px;
+  --calendar-eyebrow-color: #183336;
+
+  --calendar-eyebrow-font-size: 14px;
+  --calendar-eyebrow-margin-top: 17px;
+  
+  --calendar-eyebrow-font-weight: 400;
+  --calendar-eyebrow-line-height: 22px;
+
+  /* Heading */
+  --calendar-heading-width: 572px;
+  --calendar-heading-height: 120px;
+
+  --calendar-heading-margin-top: 24px;
+
+  --calendar-heading-font-size: 48px;
+  --calendar-heading-font-weight: 400;
+  --calendar-heading-line-height: 60px;
+
+  --calendar-heading-color: #183336;
+
+  /* Description */
+  --calendar-description-width: 550px;
+  --calendar-description-height: 87px;
+
+  --calendar-description-font-size: 18px;
+  --calendar-description-font-weight: 300;
+  --calendar-description-line-height: 30px;
+
+  --calendar-description-color: #424d4f;
+
+  /* Features */
+  --calendar-feature-font-size: 15px;
+  --calendar-feature-font-weight: 400;
+  --calendar-feature-line-height: 28.5px;
+
+  --calendar-feature-color: #424d4f;
+
+  --calendar-feature-icon-size: 12px;
+  --calendar-feature-icon-bg: #e9f8f8;
+  --calendar-feature-icon-color: #1fb8c0;
+
+  --calendar-feature-gap: 12px;
+  --calendar-feature-row-gap: 4px;
+
+  /* CTA */
+  --calendar-button-width: 176px;
+  --calendar-button-height: 51px;
+
+  --calendar-button-padding-y: 12px;
+  --calendar-button-padding-x: 24px;
+
+  --calendar-button-font-size: 14px;
+  --calendar-button-font-weight: 600;
+  --calendar-button-line-height: 20px;
+
+  --calendar-button-bg: #046363;
+  --calendar-button-color: #ffffff;
+
+  --calendar-button-radius: 10px;
+
+  /* Internal spacing */
+  --calendar-description-margin-top: 16px;
+  --calendar-features-margin-top: 26px;
+  --calendar-button-margin-top: 34px;
+
+  
+  /* =========================
+     SMARTER SCHEDULING
+  ========================== */
+
+  --smarter-section-height: 786px;
+  --smarter-section-bg: #f9f9f9;
+
+  --smarter-header-width: 707.76px;
+  --smarter-header-height: 200px;
+  --smarter-header-gap: 16px;
+
+  --smarter-title-size: 48px;
+  --smarter-title-line-height: 60px;
+  --smarter-title-weight: 400;
+  --smarter-title-color: #183336;
+
+  --smarter-subtitle-width: 503.18px;
+  --smarter-subtitle-size: 20px;
+  --smarter-subtitle-line-height: 32px;
+  --smarter-subtitle-weight: 400;
+  --smarter-subtitle-color: #424d4f;
+
+  --smarter-grid-width: 1130px;
+  --smarter-grid-height: 357.89px;
+  --smarter-grid-row-gap: 22.01px;
+  --smarter-grid-column-gap: 22.01px;
+
+  --smarter-card-height: 167.94px;
+  --smarter-card-padding: 22.01px;
+  --smarter-card-radius: 14px;
+  --smarter-card-bg: #ffffff;
+  --smarter-card-border: rgba(4, 14, 12, 0.15);
+
+  --smarter-icon-box-size: 36.69px;
+  --smarter-icon-size: 18.34px;
+  --smarter-icon-radius: 11.01px;
+  --smarter-icon-bg: rgba(224, 245, 252, 0.55);
+  --smarter-icon-color: #087f86;
+
+  --smarter-card-title-size: 16px;
+  --smarter-card-title-line-height: 30px;
+  --smarter-card-title-weight: 400;
+  --smarter-card-title-color: #1a1f2e;
+
+  --smarter-card-description-size: 12.84px;
+  --smarter-card-description-line-height: 20.87px;
+  --smarter-card-description-weight: 400;
+  --smarter-card-description-color: #6b7280;
+
+  /* =========================================================
+   SCHEDULE ANYWHERE SECTION
+========================================================= */
+
+--schedule-section-height: 747px;
+--schedule-section-bg: #e0f5fc8c;
+
+--schedule-content-width: 584px;
+--schedule-content-height: 525px;
+--schedule-content-left: 695px;
+--schedule-content-top: 111px;
+
+/* eyebrow */
+--schedule-eyebrow-font-size: 20px;
+--schedule-eyebrow-font-weight: 500;
+--schedule-eyebrow-line-height: 27px;
+--schedule-eyebrow-color: #183336;
+
+/* heading */
+--schedule-heading-width: 584px;
+--schedule-heading-font-size: 48px;
+--schedule-heading-font-weight: 400;
+--schedule-heading-line-height: 60px;
+--schedule-heading-color: #183336;
+
+/* paragraph */
+--schedule-description-width: 584px;
+--schedule-description-font-size: 20px;
+--schedule-description-font-weight: 400;
+--schedule-description-line-height: 32px;
+--schedule-description-color: #424d4f;
+
+/* feature grid */
+--schedule-feature-grid-width: 584px;
+--schedule-feature-grid-height: 128px;
+--schedule-feature-row-gap: 16px;
+--schedule-feature-column-gap: 16px;
+
+--schedule-feature-height: 56px;
+--schedule-feature-radius: 11px;
+--schedule-feature-padding-x: 16px;
+--schedule-feature-gap: 12px;
+--schedule-feature-bg: #ffffff;
+
+--schedule-feature-font-size: 16px;
+--schedule-feature-font-weight: 500;
+--schedule-feature-line-height: 24px;
+--schedule-feature-color: #0a0a0a;
+
+--schedule-feature-icon-size: 24px;
+--schedule-feature-icon-color: #008d7c;
+
+/* form */
+--schedule-form-width: 536px;
+--schedule-form-height: 56px;
+--schedule-form-radius: 12px;
+
+--schedule-input-font-size: 18px;
+--schedule-input-font-weight: 300;
+--schedule-input-line-height: 29px;
+--schedule-input-color: #424d4f;
+
+--schedule-button-width: 163px;
+--schedule-button-height: 56px;
+--schedule-button-bg: #183336;
+--schedule-button-color: #ffffff;
+--schedule-button-font-size: 20px;
+--schedule-button-font-weight: 500;
+--schedule-button-line-height: 28px;
+
+/* =========================================================
+   BUILT FOR TEAMS
+========================================================= */
+
+--teams-section-height: 633px;
+--teams-section-bg: #ffffff;
+
+/* left content */
+--teams-content-width: 460px;
+--teams-content-top: 121.55px;
+--teams-content-left: 153px;
+--teams-content-gap: 24px;
+
+--teams-eyebrow-width: 100px;
+--teams-eyebrow-height: 40px;
+--teams-eyebrow-font-size: 20px;
+--teams-eyebrow-font-weight: 500;
+--teams-eyebrow-line-height: 24px;
+--teams-eyebrow-color: #183336;
+
+--teams-heading-width: 460px;
+--teams-heading-font-size: 48px;
+--teams-heading-font-weight: 400;
+--teams-heading-line-height: 60px;
+--teams-heading-color: #1a1f2e;
+
+--teams-description-width: 460px;
+--teams-description-font-size: 17.21px;
+--teams-description-font-weight: 400;
+--teams-description-line-height: 27.97px;
+--teams-description-color: #4b5563;
+
+--teams-button-width: 174.9px;
+--teams-button-height: 45.9px;
+--teams-button-bg: #046363;
+--teams-button-color: #ffffff;
+--teams-button-radius: 11.47px;
+--teams-button-padding-y: 13.39px;
+--teams-button-padding-x: 22.95px;
+--teams-button-font-size: 13.39px;
+--teams-button-font-weight: 600;
+--teams-button-line-height: 19.12px;
+
+/* right grid */
+--teams-grid-width: 566.07px;
+--teams-grid-height: 411.35px;
+--teams-grid-left: 715.99px;
+--teams-grid-top: 110.82px;
+
+--teams-grid-row-gap: 15.3px;
+--teams-grid-column-gap: 15.3px;
+
+/* card */
+--teams-card-width: 275.38px;
+--teams-card-height: 198.03px;
+--teams-card-padding: 19.12px;
+--teams-card-radius: 15.3px;
+--teams-card-bg: #f9f9f9;
+--teams-card-border: rgba(66, 77, 79, 0.2);
+
+/* icon */
+--teams-icon-box-size: 38.25px;
+--teams-icon-size: 22.95px;
+--teams-icon-radius: 11.47px;
+--teams-icon-bg: rgba(224, 245, 252, 0.55);
+--teams-icon-color: #046363;
+
+/* card text */
+--teams-card-eyebrow-size: 14px;
+--teams-card-eyebrow-line-height: 22px;
+--teams-card-eyebrow-weight: 400;
+--teams-card-eyebrow-color: #046363;
+
+--teams-card-title-size: 16px;
+--teams-card-title-line-height: 25px;
+--teams-card-title-weight: 400;
+--teams-card-title-color: #1a1f2e;
+
+--teams-card-description-size: 13px;
+--teams-card-description-line-height: 20px;
+--teams-card-description-weight: 400;
+--teams-card-description-color: #6b7280;
+
+/* =========================================================
+   CALENDAR STEPS
+========================================================= */
+
+--steps-section-height: 1050px;
+--steps-section-bg: #ffffff;
+
+--steps-header-width: 682px;
+--steps-header-top: 77px;
+--steps-header-gap: 7px;
+
+--steps-heading-width: 649.8px;
+--steps-heading-size: 48px;
+--steps-heading-weight: 400;
+--steps-heading-line-height: 60px;
+--steps-heading-color: #183336;
+
+--steps-subtitle-width: 672px;
+--steps-subtitle-size: 20px;
+--steps-subtitle-weight: 400;
+--steps-subtitle-line-height: 32px;
+--steps-subtitle-color: #424d4f;
+
+--steps-title-size: 20px;
+--steps-title-weight: 500;
+--steps-title-line-height: 28px;
+--steps-title-color: #183336;
+
+--steps-description-size: 14px;
+--steps-description-weight: 400;
+--steps-description-line-height: 22px;
+--steps-description-color: #424d4f;
+
+--steps-step-one-width: 236px;
+--steps-step-one-image-width: 228.41px;
+--steps-step-one-image-height: 176.84px;
+
+--steps-step-two-width: 261px;
+--steps-step-two-image-width: 241px;
+--steps-step-two-image-height: 192px;
+
+--steps-step-three-width: 236px;
+--steps-step-three-image-width: 227.37px;
+--steps-step-three-image-height: 175.56px;
+
+--steps-step-four-width: 236px;
+--steps-step-four-image-width: 233.58px;
+--steps-step-four-image-height: 199.41px;
+
+--steps-button-width: 180px;
+--steps-button-height: 51px;
+--steps-button-radius: 10px;
+--steps-button-bg: #127a66;
+--steps-button-color: #ffffff;
+--steps-button-font-size: 16px;
+--steps-button-font-weight: 600;
+
+/* =========================================================
+   SEE YOUR SCHEDULE
+========================================================= */
+
+--schedule-glance-height: 944px;
+--schedule-glance-bg: #046363;
+
+--schedule-glance-header-width: 1430px;
+--schedule-glance-header-height: 140px;
+--schedule-glance-header-top: 80.75px;
+--schedule-glance-header-gap: 20px;
+
+--schedule-glance-heading-width: 696px;
+--schedule-glance-heading-size: 48px;
+--schedule-glance-heading-weight: 400;
+--schedule-glance-heading-line-height: 60px;
+--schedule-glance-heading-color: #ffffff;
+
+--schedule-glance-description-width: 672px;
+--schedule-glance-description-size: 20px;
+--schedule-glance-description-weight: 400;
+--schedule-glance-description-line-height: 32px;
+--schedule-glance-description-color: #f9f9f9;
+
+--schedule-glance-calendar-width: 1133px;
+--schedule-glance-calendar-height: 460px;
+--schedule-glance-calendar-left: 150px;
+--schedule-glance-calendar-top: 320px;
+--schedule-glance-calendar-radius: 16px;
+
+--schedule-glance-button-width: 224px;
+--schedule-glance-button-height: 51px;
+--schedule-glance-button-top: 810px;
+--schedule-glance-button-radius: 10px;
+--schedule-glance-button-bg: #ffffff;
+--schedule-glance-button-color: #046363;
+--schedule-glance-button-size: 16px;
+--schedule-glance-button-weight: 600;
+
+/* =========================================================
+   INTEGRATION SECTION
+========================================================= */
+
+--integration-section-height: 508px;
+--integration-section-bg: rgba(224, 245, 252, 0.55);
+
+--integration-layout-width: 1130px;
+
+--integration-content-width: 365px;
+--integration-content-top: 122px;
+
+--integration-eyebrow-width: 104px;
+--integration-eyebrow-height: 40px;
+--integration-eyebrow-size: 20px;
+--integration-eyebrow-weight: 500;
+--integration-eyebrow-line-height: 27px;
+--integration-eyebrow-color: #183336;
+
+--integration-heading-width: 365px;
+--integration-heading-size: 40px;
+--integration-heading-weight: 400;
+--integration-heading-line-height: 50.4px;
+--integration-heading-color: #1a1f2e;
+
+--integration-description-width: 365px;
+--integration-description-size: 18px;
+--integration-description-weight: 300;
+--integration-description-line-height: 29px;
+--integration-description-color: #4b5563;
+
+--integration-tools-width: 691px;
+--integration-tools-height: 261px;
+--integration-tools-gap-x: 16px;
+--integration-tools-gap-y: 36px;
+
+--integration-card-height: 63px;
+--integration-card-radius: 12px;
+--integration-card-padding-y: 12px;
+--integration-card-padding-x: 16px;
+--integration-card-gap: 16px;
+--integration-card-bg: #ffffff;
+--integration-card-border: #f3f4f6;
+
+--integration-card-font-size: 16px;
+--integration-card-font-weight: 400;
+--integration-card-color: #1a1f2e;
+
+--integration-card-icon-size: 34px;
+
+/* =========================================================
+   FAQ SECTION
+========================================================= */
+
+--faq-section-height: 1098px;
+--faq-section-bg: rgba(224, 245, 252, 0.55);
+
+--faq-section-padding-top: 76px;
+--faq-section-padding-x: 150px;
+--faq-section-padding-bottom: 76px;
+
+--faq-heading-width: 638px;
+--faq-heading-size: 48px;
+--faq-heading-weight: 400;
+--faq-heading-line-height: 60px;
+--faq-heading-color: #0a0a0a;
+
+--faq-heading-list-gap: 72px;
+
+--faq-list-width: 1140px;
+--faq-list-gap: 14px;
+
+--faq-item-height: 69.6px;
+--faq-item-open-height: 164px;
+
+--faq-item-bg: #ffffff;
+--faq-item-radius: 10px;
+--faq-item-border: #e5e7eb;
+--faq-item-border-width: 0.8px;
+
+--faq-question-size: 18px;
+--faq-question-weight: 550;
+--faq-question-line-height: 28px;
+--faq-question-color: #0a0a0a;
+
+--faq-answer-size: 16px;
+--faq-answer-weight: 300;
+--faq-answer-line-height: 25px;
+--faq-answer-color: #424d4f;
+
+/* =========================================================
+   CALENDAR CTA SECTION
+========================================================= */
+
+--calendar-cta-height: 556px;
+--calendar-cta-bg: #004b32;
+
+--calendar-cta-content-width: 510.75px;
+--calendar-cta-content-left: 153px;
+--calendar-cta-content-top: 136px;
+
+--calendar-cta-heading-width: 418px;
+--calendar-cta-heading-size: 40px;
+--calendar-cta-heading-weight: 400;
+--calendar-cta-heading-line-height: 50.4px;
+--calendar-cta-heading-color: #ffffff;
+
+--calendar-cta-description-width: 396.3px;
+--calendar-cta-description-size: 20px;
+--calendar-cta-description-weight: 400;
+--calendar-cta-description-line-height: 32px;
+--calendar-cta-description-color: #f9f9f9;
+
+--calendar-cta-form-width: 579px;
+--calendar-cta-form-height: 355px;
+--calendar-cta-form-top: 99px;
+--calendar-cta-form-left: 692px;
+--calendar-cta-form-radius: 14px;
+--calendar-cta-form-bg: #ffffff;
+
+--calendar-cta-input-width: 527px;
+--calendar-cta-input-height: 60px;
+--calendar-cta-input-radius: 10px;
+
+--calendar-cta-label-size: 16px;
+--calendar-cta-label-line-height: 25px;
+--calendar-cta-label-color: #183336;
+
+--calendar-cta-placeholder-size: 18px;
+--calendar-cta-placeholder-weight: 250;
+--calendar-cta-placeholder-line-height: 29px;
+--calendar-cta-placeholder-color: #424d4f;
+
+--calendar-cta-button-width: 527px;
+--calendar-cta-button-height: 51px;
+--calendar-cta-button-bg: #00ead8;
+--calendar-cta-button-color: #183336;
+--calendar-cta-button-size: 16px;
+--calendar-cta-button-weight: 600;
+
+--calendar-cta-note-size: 12px;
+--calendar-cta-note-line-height: 16px;
+--calendar-cta-note-color: #6b7a72;
+
+/* ========================================
+   GET STARTED SECTION
+======================================== */
+
+--get-started-bg: #046363;
+
+--get-started-height: 788px;
+--get-started-padding-x: 150px;
+--get-started-padding-y: 59px;
+
+--get-started-content-width: 402px;
+
+--get-started-heading-size: 48px;
+--get-started-heading-line: 64px;
+--get-started-heading-weight: 500;
+
+--get-started-description-size: 20px;
+--get-started-description-line: 32px;
+--get-started-description-weight: 200;
+
+--get-started-form-width: 698px;
+--get-started-form-height: 553px;
+--get-started-form-radius: 14px;
+
+--get-started-input-height: 60px;
+--get-started-input-radius: 10px;
+--get-started-input-bg: rgba(18, 122, 102, 0.08);
+--get-started-input-border: rgba(95, 132, 125, 0.3);
+
+--get-started-dark: #183336;
+--get-started-green: #127a66;
+--get-started-placeholder: #424d4f;
+
+/* =========================================================
+   TESTIMONIALS TOKENS
+========================================================= */
+
+--testimonials-section-height: 727px;
+--testimonials-container-width: 1440px;
+--testimonials-content-width: 1140px;
+
+--testimonials-heading-size: 48px;
+--testimonials-heading-line-height: 60px;
+--testimonials-heading-weight: 400;
+--testimonials-heading-color: #183336;
+
+--testimonials-description-size: 18px;
+--testimonials-description-line-height: 29px;
+--testimonials-description-weight: 300;
+--testimonials-description-color: #424d4f;
+
+--testimonial-card-width: 270px;
+--testimonial-card-height: 262px;
+--testimonial-card-radius: 14px;
+--testimonial-card-gap: 20px;
+
+--testimonial-card-light-bg: rgba(224, 245, 252, 0.55);
+--testimonial-card-teal-bg: rgba(31, 184, 192, 0.2);
+
+--testimonial-avatar-size: 74.64px;
+--testimonial-avatar-bg: #f9f9f9;
+--testimonial-avatar-border: 5px solid #ffffff;
+--testimonial-avatar-shadow: 0 2px 12.3px rgba(0, 0, 0, 0.23);
+
+--testimonial-review-size: 14px;
+--testimonial-review-line-height: 22px;
+--testimonial-review-color: #183336;
+
+--testimonial-name-size: 13px;
+--testimonial-name-line-height: 17px;
+--testimonial-name-weight: 700;
+
+--testimonial-role-size: 13px;
+--testimonial-role-line-height: 20px;
+--testimonial-role-weight: 400;
+
+--testimonial-footer-bg: #ffffff;
+
+--testimonial-star-size: 20px;
+--testimonial-star-color: #ffef3b;
+
+/* =========================================================
+   PRICING TOKENS
+========================================================= */
+
+--pricing-section-height: 1286px;
+--pricing-container-width: 1440px;
+
+--pricing-main-width: 1263px;
+--pricing-usage-width: 1186px;
+
+--pricing-heading-size: 48px;
+--pricing-heading-line: 60px;
+--pricing-heading-weight: 400;
+--pricing-heading-color: #0b2d1e;
+
+--pricing-description-size: 20px;
+--pricing-description-line: 32px;
+--pricing-description-weight: 400;
+--pricing-description-color: #424d4f;
+
+--pricing-card-width: 242.64px;
+--pricing-card-height: 533px;
+--pricing-card-radius: 16px;
+
+--pricing-card-bg: #ffffff;
+--pricing-card-dark: #183336;
+
+--pricing-accent: #00ead8;
+--pricing-price-color: #1fb8c0;
+
+--pricing-green: #046363;
+--pricing-dark-green: #004b32;
+
+--pricing-border-color: rgba(64, 80, 92, 0.15);
+
+--pricing-bottom-bg: rgba(224, 245, 252, 0.55);
+}
+
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 108px;
+}
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: var(--color-white);
+  color: var(--color-deep-green);
+
+  font-family: var(--font-primary);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================
+   SHARED CONTAINER
+============================================================ */
+
+.site-container {
+  width: min(
+    calc(100% - var(--container-side-space)),
+    var(--container-desktop)
+  );
+
+  margin-inline: auto;
+}
+
+/* ============================================================
+   SHARED BUTTON
+============================================================ */
+
+.ds-button {
+  height: var(--button-height);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    var(--button-padding-y)
+    var(--button-padding-x);
+
+  border-radius: var(--button-radius);
+
+  font-family: var(--font-primary);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+
+  white-space: nowrap;
+}
+
+/* ============================================================
+   OUTLINE BUTTON
+============================================================ */
+
+.ds-button-outline {
+  width: var(--button-login-width);
+
+  border:
+    var(--button-border-width)
+    solid
+    var(--color-dark-grey);
+
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+}
+
+/* ============================================================
+   PRIMARY BUTTON
+============================================================ */
+
+.ds-button-primary {
+  width: var(--button-contact-width);
+
+  border:
+    var(--button-border-width)
+    solid
+    var(--color-deep-green);
+
+  background: var(--color-deep-green);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.site-navbar {
+  width: 100%;
+  height: var(--navbar-height);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+
+  display: flex;
+  align-items: center;
+
+  background: var(--color-white);
+
+  box-shadow: var(--navbar-shadow);
+}
+
+/* ============================================================
+   NAVBAR INNER
+============================================================ */
+
+.navbar-inner {
+  height: var(--navbar-content-height);
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
+  align-items: center;
+
+  column-gap: var(--navbar-main-gap);
+}
+
+/* ============================================================
+   LOGO
+============================================================ */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.navbar-logo img {
+  display: block;
+
+  height: var(--navbar-content-height);
+  width: auto;
+
+  object-fit: contain;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.navbar-nav {
+  height: var(--navbar-nav-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--navbar-nav-gap);
+}
+
+/* ============================================================
+   NAVIGATION LINK
+============================================================ */
+
+.navbar-nav-link {
+  position: relative;
+
+  height: var(--navbar-nav-height);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: var(--nav-item-padding-x);
+
+  font-family: var(--font-primary);
+  font-size: var(--nav-font-size);
+  font-weight: var(--nav-font-weight);
+  line-height: var(--nav-line-height);
+
+  color: var(--color-black);
+
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ACTIVE NAVIGATION LINK
+============================================================ */
+
+.navbar-nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: var(--nav-item-padding-x);
+  right: var(--nav-item-padding-x);
+  bottom: 0;
+
+  height: var(--nav-active-border-width);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-nav-gradient-start),
+      var(--color-nav-gradient-end)
+    );
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+.navbar-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   NAVBAR ACTIONS
+============================================================ */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: var(--navbar-actions-gap);
+
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   HERO SECTION
+============================================================ */
+
+.hero-section {
+  position: relative;
+
+  width: 100%;
+  min-height: var(--hero-height);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: var(--color-white);
+}
+
+/* ============================================================
+   HERO BACKGROUND GRADIENT
+============================================================ */
+
+.hero-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 30% 120% at 50% 45%,
+      rgba(164, 228, 231, 0.42) 0%,
+      rgba(164, 228, 231, 0.28) 35%,
+      rgba(164, 228, 231, 0.14) 60%,
+      rgba(255, 255, 255, 0.76) 82%,
+      #ffffff 100%
+    );
+}
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+
+  width: min(
+    calc(100% - var(--container-side-space)),
+    var(--hero-content-width)
+  );
+
+  padding-top: var(--hero-content-top);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: var(--hero-content-gap);
+}
+
+/* ============================================================
+   HERO COPY
+============================================================ */
+
+.hero-copy {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================================
+   HERO HEADING
+============================================================ */
+
+.hero-heading {
+  width: min(
+    100%,
+    var(--hero-heading-width)
+  );
+
+  margin: 0;
+
+  color: var(--hero-heading-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--hero-heading-size);
+  font-weight: var(--hero-heading-weight);
+  line-height: var(--hero-heading-line-height);
+
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+/* ============================================================
+   HERO DESCRIPTION
+============================================================ */
+
+.hero-description {
+  width: min(
+    100%,
+    var(--hero-description-width)
+  );
+
+  margin:
+    var(--hero-description-top-space)
+    0
+    0;
+
+  color: var(--hero-description-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--hero-description-size);
+  font-weight: var(--hero-description-weight);
+  line-height: var(--hero-description-line-height);
+
+  letter-spacing: 0.5px;
+
+  text-align: center;
+}
+
+/* ============================================================
+   HERO FORM WRAPPER
+============================================================ */
+
+.hero-form-wrapper {
+  width: min(
+    100%,
+    var(--hero-form-wrapper-width)
+  );
+
+  padding: var(--hero-form-wrapper-padding);
+}
+
+/* ============================================================
+   HERO FORM
+============================================================ */
+
+.hero-form {
+  width: 100%;
+  height: var(--hero-form-height);
+
+  display: flex;
+  align-items: stretch;
+
+  margin: 0;
+}
+
+/* ============================================================
+   HERO INPUT
+============================================================ */
+
+.hero-input {
+  min-width: 0;
+  flex: 1;
+
+  height: 100%;
+
+  padding-inline: var(--hero-input-padding-x);
+
+  border:
+    var(--hero-form-border-width)
+    solid
+    var(--hero-form-border-color);
+
+  border-right: 0;
+
+  border-radius:
+    var(--hero-form-radius)
+    0
+    0
+    var(--hero-form-radius);
+
+  background: var(--color-white);
+
+  color: var(--hero-input-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--hero-input-size);
+  font-weight: var(--hero-input-weight);
+  line-height: var(--hero-input-line-height);
+
+  outline: none;
+}
+
+.hero-input::placeholder {
+  color: var(--hero-input-color);
+  opacity: 1;
+}
+
+/* ============================================================
+   HERO SUBMIT
+============================================================ */
+
+.hero-submit {
+  width: var(--hero-submit-width);
+  height: 100%;
+
+  flex-shrink: 0;
+
+  border: 0;
+
+  border-radius:
+    0
+    var(--hero-form-radius)
+    var(--hero-form-radius)
+    0;
+
+  background: var(--hero-submit-bg);
+  color: var(--hero-submit-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--hero-submit-size);
+  font-weight: var(--hero-submit-weight);
+  line-height: var(--hero-submit-line-height);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   HERO SCHEDULER VISUAL
+============================================================ */
+
+.hero-visual {
+  position: relative;
+  z-index: 1;
+
+  width: min(
+    calc(100% - var(--container-side-space)),
+    var(--hero-visual-width)
+  );
+
+  min-height: var(--hero-visual-min-height);
+
+  margin-top: var(--hero-visual-top-space);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ============================================================
+   CENTER CALENDAR
+============================================================ */
+
+.hero-visual-calendar {
+  position: relative;
+
+  z-index: var(--hero-calendar-z-index);
+
+  display: block;
+
+  width: var(--hero-calendar-width);
+  height: var(--hero-calendar-height);
+
+  object-fit: contain;
+}
+
+/* ============================================================
+   LEFT BOOKING CARD
+============================================================ */
+
+.hero-visual-booking {
+  position: absolute;
+
+  z-index: var(--hero-side-card-z-index);
+
+  left: var(--hero-booking-left);
+  top: var(--hero-booking-top);
+
+  display: block;
+
+  width: var(--hero-booking-width);
+  height: var(--hero-booking-height);
+
+  opacity: var(--hero-booking-opacity);
+
+  object-fit: contain;
+}
+
+/* ============================================================
+   RIGHT RECORDING CARD
+============================================================ */
+
+.hero-visual-recording {
+  position: absolute;
+
+  z-index: var(--hero-side-card-z-index);
+
+  right: var(--hero-recording-right);
+  top: var(--hero-recording-top);
+
+  display: block;
+
+  width: var(--hero-recording-width);
+  height: var(--hero-recording-height);
+
+  opacity: var(--hero-recording-opacity);
+
+  object-fit: contain;
+}
+/* ============================================================
+   CALENDAR CONNECTED SECTION
+============================================================ */
+
+.calendar-connected-section {
+  position: relative;
+
+  width: 100%;
+  height: var(--calendar-section-height);
+
+  background: var(--calendar-section-bg);
+
+  overflow: hidden;
+}
+
+/* ============================================================
+   SECTION LAYOUT
+============================================================ */
+
+.calendar-connected-layout {
+  position: relative;
+
+  width: min(
+    100%,
+    var(--page-desktop-width)
+  );
+
+  height: 100%;
+
+  margin-inline: auto;
+}
+
+/* ============================================================
+   LEFT VISUAL
+============================================================ */
+
+.calendar-connected-visual {
+  position: absolute;
+
+  top: var(--calendar-visual-top);
+  left: 0;
+
+  width: var(--calendar-visual-width);
+  height: var(--calendar-visual-height);
+}
+
+.calendar-connected-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ============================================================
+   RIGHT CONTENT
+============================================================ */
+
+.calendar-connected-content {
+  position: absolute;
+
+  top: var(--calendar-content-top);
+  left: var(--calendar-content-left);
+
+  width: var(--calendar-content-width);
+  height: var(--calendar-content-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+.calendar-connected-eyebrow {
+  width: max-content;
+  min-width: var(--calendar-eyebrow-width);
+  height: var(--calendar-eyebrow-height);
+
+  margin-top: var(--calendar-eyebrow-margin-top);
+
+  display: inline-flex;
+  align-items: flex-start;
+
+  border-bottom:
+    var(--calendar-eyebrow-border-width)
+    solid
+    var(--calendar-eyebrow-color);
+
+  color: var(--calendar-eyebrow-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-eyebrow-font-size);
+  font-weight: var(--calendar-eyebrow-font-weight);
+  line-height: var(--calendar-eyebrow-line-height);
+
+  white-space: nowrap;
+}
+
+/* ============================================================
+   HEADING
+============================================================ */
+
+.calendar-connected-heading {
+  width: var(--calendar-heading-width);
+
+  margin:
+    var(--calendar-heading-margin-top)
+    0
+    0;
+
+  color: var(--calendar-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-heading-font-size);
+  font-weight: var(--calendar-heading-font-weight);
+  line-height: var(--calendar-heading-line-height);
+
+  letter-spacing: 0;
+
+  text-align: left;
+}
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+
+.calendar-connected-description {
+  width: var(--calendar-description-width);
+
+  margin:
+    var(--calendar-description-margin-top)
+    0
+    0;
+
+  color: var(--calendar-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-description-font-size);
+  font-weight: var(--calendar-description-font-weight);
+  line-height: var(--calendar-description-line-height);
+
+  letter-spacing: 0;
+
+  text-align: left;
+}
+
+/* ============================================================
+   FEATURES
+============================================================ */
+
+.calendar-connected-features {
+  width: 100%;
+
+  margin-top: var(--calendar-features-margin-top);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--calendar-feature-row-gap);
+}
+
+.calendar-connected-feature {
+  display: flex;
+  align-items: center;
+
+  gap: var(--calendar-feature-gap);
+
+  color: var(--calendar-feature-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-feature-font-size);
+  font-weight: var(--calendar-feature-font-weight);
+  line-height: var(--calendar-feature-line-height);
+}
+
+/* ============================================================
+   CHECK ICON
+============================================================ */
+
+.calendar-connected-check {
+  width: var(--calendar-feature-icon-size);
+  height: var(--calendar-feature-icon-size);
+
+  flex: 0 0 var(--calendar-feature-icon-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--calendar-feature-icon-bg);
+
+  color: var(--calendar-feature-icon-color);
+
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ============================================================
+   CTA BUTTON
+============================================================ */
+
+.calendar-connected-button {
+  width: var(--calendar-button-width);
+  height: var(--calendar-button-height);
+
+  margin-top: var(--calendar-button-margin-top);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    var(--calendar-button-padding-y)
+    var(--calendar-button-padding-x);
+
+  border-radius: var(--calendar-button-radius);
+
+  background: var(--calendar-button-bg);
+  color: var(--calendar-button-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-button-font-size);
+  font-weight: var(--calendar-button-font-weight);
+  line-height: var(--calendar-button-line-height);
+
+  white-space: nowrap;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.calendar-connected-button:hover {
+  opacity: 0.92;
+}
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+  .calendar-connected-section {
+    height: auto;
+    padding-block: 72px;
+  }
+
+  .calendar-connected-layout {
+    width: min(
+      calc(100% - 48px),
+      var(--container-desktop)
+    );
+
+    height: auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 48px;
+  }
+
+  .calendar-connected-visual,
+  .calendar-connected-content {
+    position: static;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .calendar-connected-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .calendar-connected-heading,
+  .calendar-connected-description {
+    width: 100%;
+  }
+
+  .calendar-connected-heading {
+    font-size: 42px;
+    line-height: 52px;
+  }
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 767px) {
+  .calendar-connected-section {
+    padding-block: 56px;
+  }
+
+  .calendar-connected-layout {
+    width: min(
+      calc(100% - 32px),
+      var(--container-desktop)
+    );
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+  }
+
+  .calendar-connected-visual {
+    order: 2;
+  }
+
+  .calendar-connected-content {
+    order: 1;
+  }
+
+  .calendar-connected-heading {
+    margin-top: 20px;
+
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .calendar-connected-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .calendar-connected-button {
+    margin-top: 24px;
+  }
+}
+
+/* =========================================================
+   SMARTER SCHEDULING SECTION
+========================================================= */
+
+.smarter-scheduling-section {
+  width: 100%;
+  height: var(--smarter-section-height);
+  background: var(--smarter-section-bg);
+  font-family: var(--font-primary);
+}
+
+.smarter-scheduling-inner {
+  width: min(100%, 1440px);
+  height: 100%;
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.smarter-scheduling-header {
+  width: var(--smarter-header-width);
+  height: var(--smarter-header-height);
+
+  margin-top: 82px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--smarter-header-gap);
+
+  text-align: center;
+}
+
+.smarter-scheduling-title {
+  margin: 0;
+  color: var(--smarter-title-color);
+  font-family: var(--font-primary);
+  font-size: var(--smarter-title-size);
+  font-weight: var(--smarter-title-weight);
+  line-height: var(--smarter-title-line-height);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.smarter-scheduling-subtitle {
+  width: var(--smarter-subtitle-width);
+  margin: 0;
+
+  color: var(--smarter-subtitle-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--smarter-subtitle-size);
+  font-weight: var(--smarter-subtitle-weight);
+  line-height: var(--smarter-subtitle-line-height);
+  letter-spacing: 0.5px;
+
+  text-align: center;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.smarter-scheduling-grid {
+  width: var(--smarter-grid-width);
+  height: var(--smarter-grid-height);
+
+  margin-top: 39px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, var(--smarter-card-height));
+
+  column-gap: var(--smarter-grid-column-gap);
+  row-gap: var(--smarter-grid-row-gap);
+}
+
+/* =========================
+   CARD
+========================= */
+
+.smarter-scheduling-card {
+  min-width: 0;
+  height: var(--smarter-card-height);
+
+  padding: var(--smarter-card-padding);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: var(--smarter-card-bg);
+
+  border:
+    0.73px solid
+    var(--smarter-card-border);
+
+  border-radius: var(--smarter-card-radius);
+
+  box-shadow:
+    0px 0.92px 2.75px
+    rgba(0, 0, 0, 0.06);
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   ICON
+========================= */
+
+.smarter-scheduling-icon-box {
+  width: var(--smarter-icon-box-size);
+  height: var(--smarter-icon-box-size);
+
+  flex: 0 0 var(--smarter-icon-box-size);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--smarter-icon-radius);
+
+  background: var(--smarter-icon-bg);
+  color: var(--smarter-icon-color);
+}
+
+.smarter-scheduling-icon {
+  width: var(--smarter-icon-size);
+  height: var(--smarter-icon-size);
+}
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.smarter-scheduling-card-title {
+  margin:
+    12px
+    0
+    0;
+
+  color: var(--smarter-card-title-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--smarter-card-title-size);
+  font-weight: var(--smarter-card-title-weight);
+  line-height: var(--smarter-card-title-line-height);
+  letter-spacing: 0.2px;
+}
+
+.smarter-scheduling-card-description {
+  margin:
+    0
+    0
+    0;
+
+  color: var(--smarter-card-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--smarter-card-description-size);
+  font-weight: var(--smarter-card-description-weight);
+  line-height: var(--smarter-card-description-line-height);
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .smarter-scheduling-section {
+    height: auto;
+    padding: 72px 24px;
+    box-sizing: border-box;
+  }
+
+  .smarter-scheduling-header {
+    width: min(100%, var(--smarter-header-width));
+    height: auto;
+    margin-top: 0;
+  }
+
+  .smarter-scheduling-grid {
+    width: 100%;
+    max-width: var(--smarter-grid-width);
+    height: auto;
+    margin-top: 48px;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .smarter-scheduling-card {
+    height: auto;
+    min-height: var(--smarter-card-height);
+  }
+}
+
+@media (max-width: 767px) {
+  .smarter-scheduling-section {
+    padding: 56px 16px;
+  }
+
+  .smarter-scheduling-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .smarter-scheduling-title br,
+  .smarter-scheduling-subtitle br {
+    display: none;
+  }
+
+  .smarter-scheduling-subtitle {
+    width: 100%;
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .smarter-scheduling-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+/* =========================================================
+   SCHEDULE ANYWHERE SECTION
+========================================================= */
+
+.schedule-anywhere-section {
+  position: relative;
+  width: 100%;
+  height: var(--schedule-section-height);
+  background: var(--schedule-section-bg);
+  overflow: hidden;
+}
+
+.schedule-anywhere-layout {
+  position: relative;
+  width: min(100%, 1440px);
+  height: 100%;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   LEFT VISUAL
+========================================================= */
+
+.schedule-anywhere-visual {
+  position: absolute;
+
+  left: 70px;
+  bottom: -60px;
+
+  width: 560px;
+  height: 760px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.schedule-anywhere-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.schedule-anywhere-content {
+  position: absolute;
+
+  top: var(--schedule-content-top);
+  left: var(--schedule-content-left);
+
+  width: var(--schedule-content-width);
+  min-height: var(--schedule-content-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  z-index: 3;
+}
+
+/* =========================================================
+   TOP TEXT
+========================================================= */
+
+.schedule-anywhere-top {
+  width: 100%;
+}
+
+.schedule-anywhere-eyebrow {
+  display: inline-block;
+
+  color: var(--schedule-eyebrow-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-eyebrow-font-size);
+  font-weight: var(--schedule-eyebrow-font-weight);
+  line-height: var(--schedule-eyebrow-line-height);
+  letter-spacing: 0.2px;
+
+  border-bottom: 1px solid var(--schedule-eyebrow-color);
+}
+
+.schedule-anywhere-heading {
+  width: var(--schedule-heading-width);
+
+  margin: 20px 0 0;
+
+  color: var(--schedule-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-heading-font-size);
+  font-weight: var(--schedule-heading-font-weight);
+  line-height: var(--schedule-heading-line-height);
+  letter-spacing: 1px;
+}
+
+.schedule-anywhere-description {
+  width: var(--schedule-description-width);
+
+  margin: 18px 0 0;
+
+  color: var(--schedule-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-description-font-size);
+  font-weight: var(--schedule-description-font-weight);
+  line-height: var(--schedule-description-line-height);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.schedule-anywhere-features {
+  width: var(--schedule-feature-grid-width);
+  height: var(--schedule-feature-grid-height);
+
+  margin-top: 26px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, var(--schedule-feature-height));
+
+  column-gap: var(--schedule-feature-column-gap);
+  row-gap: var(--schedule-feature-row-gap);
+}
+
+.schedule-anywhere-feature {
+  height: var(--schedule-feature-height);
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--schedule-feature-gap);
+
+  padding-inline: var(--schedule-feature-padding-x);
+
+  background: var(--schedule-feature-bg);
+
+  border-radius: var(--schedule-feature-radius);
+
+  box-shadow:
+    0 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+
+  color: var(--schedule-feature-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-feature-font-size);
+  font-weight: var(--schedule-feature-font-weight);
+  line-height: var(--schedule-feature-line-height);
+}
+
+.schedule-anywhere-feature-icon {
+  width: var(--schedule-feature-icon-size);
+  height: var(--schedule-feature-icon-size);
+
+  flex-shrink: 0;
+
+  color: var(--schedule-feature-icon-color);
+}
+
+/* =========================================================
+   EMAIL FORM
+========================================================= */
+
+.schedule-anywhere-form {
+  width: var(--schedule-form-width);
+  height: var(--schedule-form-height);
+
+  margin-top: 32px;
+
+  display: flex;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(66, 77, 79, 0.35);
+  border-radius: var(--schedule-form-radius);
+}
+
+.schedule-anywhere-input {
+  flex: 1;
+  min-width: 0;
+
+  height: 100%;
+
+  padding: 0 32px;
+
+  border: 0;
+  outline: 0;
+
+  background: #ffffff;
+
+  color: var(--schedule-input-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-input-font-size);
+  font-weight: var(--schedule-input-font-weight);
+  line-height: var(--schedule-input-line-height);
+}
+
+.schedule-anywhere-input::placeholder {
+  color: var(--schedule-input-color);
+  opacity: 1;
+}
+
+.schedule-anywhere-button {
+  width: var(--schedule-button-width);
+  height: 100%;
+
+  flex-shrink: 0;
+
+  border: 0;
+
+  background: var(--schedule-button-bg);
+  color: var(--schedule-button-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-button-font-size);
+  font-weight: var(--schedule-button-font-weight);
+  line-height: var(--schedule-button-line-height);
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .schedule-anywhere-section {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .schedule-anywhere-layout {
+    width: min(calc(100% - 48px), 1000px);
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 48px;
+
+    align-items: center;
+  }
+
+  .schedule-anywhere-visual {
+    position: static;
+
+    width: 100%;
+    height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .schedule-anywhere-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .schedule-anywhere-content {
+    position: static;
+
+    width: 100%;
+    min-height: auto;
+  }
+
+  .schedule-anywhere-heading,
+  .schedule-anywhere-description,
+  .schedule-anywhere-features,
+  .schedule-anywhere-form {
+    width: 100%;
+  }
+
+  .schedule-anywhere-heading {
+    font-size: 42px;
+    line-height: 52px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .schedule-anywhere-section {
+    height: auto;
+    padding: 56px 0;
+  }
+
+  .schedule-anywhere-layout {
+    width: min(calc(100% - 32px), 600px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+  }
+
+  .schedule-anywhere-content {
+    order: 1;
+  }
+
+  .schedule-anywhere-visual {
+    position: static;
+
+    order: 2;
+
+    width: 100%;
+    height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .schedule-anywhere-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .schedule-anywhere-heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .schedule-anywhere-description {
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .schedule-anywhere-features {
+    height: auto;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .schedule-anywhere-form {
+    height: 56px;
+  }
+
+  .schedule-anywhere-input {
+    padding-inline: 18px;
+  }
+
+  .schedule-anywhere-button {
+    width: 135px;
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .schedule-anywhere-section {
+    padding: 48px 0;
+  }
+
+  .schedule-anywhere-layout {
+    width: calc(100% - 24px);
+  }
+
+  .schedule-anywhere-visual {
+    height: 520px;
+  }
+
+  .schedule-anywhere-heading {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .schedule-anywhere-description {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .schedule-anywhere-form {
+    height: auto;
+
+    flex-direction: column;
+
+    overflow: visible;
+
+    border: 0;
+    background: transparent;
+  }
+
+  .schedule-anywhere-input {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(66, 77, 79, 0.35);
+    border-radius: var(--schedule-form-radius);
+
+    box-sizing: border-box;
+  }
+
+  .schedule-anywhere-button {
+    width: 100%;
+    height: 54px;
+
+    margin-top: 12px;
+
+    border-radius: var(--schedule-form-radius);
+  }
+}
+  /* =========================================================
+   BUILT FOR TEAMS SECTION
+========================================================= */
+
+.built-teams-section {
+  position: relative;
+  width: 100%;
+  height: var(--teams-section-height);
+
+  background: var(--teams-section-bg);
+
+  overflow: hidden;
+
+  font-family: var(--font-primary);
+}
+
+.built-teams-layout {
+  position: relative;
+
+  width: min(100%, 1440px);
+  height: 100%;
+
+  margin-inline: auto;
+}
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.built-teams-content {
+  position: absolute;
+
+  top: var(--teams-content-top);
+  left: var(--teams-content-left);
+
+  width: var(--teams-content-width);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.built-teams-eyebrow {
+  width: max-content;
+  min-width: var(--teams-eyebrow-width);
+  height: var(--teams-eyebrow-height);
+  height: 35px;
+  
+
+  display: inline-flex;
+  align-items: flex-start;
+  
+
+  border-bottom: 0.5px solid #000000;
+
+  color: var(--teams-eyebrow-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-eyebrow-font-size);
+  font-weight: var(--teams-eyebrow-font-weight);
+  line-height: var(--teams-eyebrow-line-height);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.built-teams-heading {
+  width: var(--teams-heading-width);
+
+  margin: 24px 0 0;
+
+  color: var(--teams-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-heading-font-size);
+  font-weight: var(--teams-heading-font-weight);
+  line-height: var(--teams-heading-line-height);
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.built-teams-description {
+  width: var(--teams-description-width);
+
+  margin: 18px 0 0;
+
+  color: var(--teams-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-description-font-size);
+  font-weight: var(--teams-description-font-weight);
+  line-height: var(--teams-description-line-height);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.built-teams-button {
+  width: var(--teams-button-width);
+  height: var(--teams-button-height);
+
+  margin-top: 26px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    var(--teams-button-padding-y)
+    var(--teams-button-padding-x);
+
+  border: 0;
+
+  border-radius: var(--teams-button-radius);
+
+  background: var(--teams-button-bg);
+  color: var(--teams-button-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-button-font-size);
+  font-weight: var(--teams-button-font-weight);
+  line-height: var(--teams-button-line-height);
+
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   RIGHT GRID
+========================================================= */
+
+.built-teams-grid {
+  position: absolute;
+
+  top: var(--teams-grid-top);
+  left: var(--teams-grid-left);
+
+  width: var(--teams-grid-width);
+  height: var(--teams-grid-height);
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, var(--teams-card-width));
+
+  grid-template-rows:
+    repeat(2, var(--teams-card-height));
+
+  column-gap: var(--teams-grid-column-gap);
+  row-gap: var(--teams-grid-row-gap);
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.built-teams-card {
+  width: var(--teams-card-width);
+  height: var(--teams-card-height);
+
+  padding: var(--teams-card-padding);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: var(--teams-card-bg);
+
+  border:
+    0.76px solid
+    var(--teams-card-border);
+
+  border-radius: var(--teams-card-radius);
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.built-teams-icon-box {
+  width: var(--teams-icon-box-size);
+  height: var(--teams-icon-box-size);
+
+  flex: 0 0 var(--teams-icon-box-size);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--teams-icon-radius);
+
+  background: var(--teams-icon-bg);
+
+  color: var(--teams-icon-color);
+}
+
+.built-teams-icon {
+  width: var(--teams-icon-size);
+  height: var(--teams-icon-size);
+}
+
+/* =========================================================
+   CARD TEXT
+========================================================= */
+
+.built-teams-card-eyebrow {
+  margin: 10px 0 0;
+
+  color: var(--teams-card-eyebrow-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-card-eyebrow-size);
+  font-weight: var(--teams-card-eyebrow-weight);
+  line-height: var(--teams-card-eyebrow-line-height);
+}
+
+.built-teams-card-title {
+  margin: 0;
+
+  color: var(--teams-card-title-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-card-title-size);
+  font-weight: var(--teams-card-title-weight);
+  line-height: var(--teams-card-title-line-height);
+}
+
+.built-teams-card-description {
+  width: 237px;
+
+  margin: 1.65px 0 0;
+
+  color: var(--teams-card-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--teams-card-description-size);
+  font-weight: var(--teams-card-description-weight);
+  line-height: var(--teams-card-description-line-height);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .built-teams-section {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .built-teams-layout {
+    width: min(calc(100% - 48px), 1000px);
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+
+    align-items: center;
+  }
+
+  .built-teams-content,
+  .built-teams-grid {
+    position: static;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .built-teams-heading,
+  .built-teams-description {
+    width: 100%;
+  }
+
+  .built-teams-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .built-teams-card {
+    width: 100%;
+    height: auto;
+    min-height: var(--teams-card-height);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .built-teams-section {
+    padding: 56px 0;
+  }
+
+  .built-teams-layout {
+    width: min(calc(100% - 32px), 600px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+  }
+
+  .built-teams-heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .built-teams-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .built-teams-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .built-teams-card {
+    min-height: 180px;
+  }
+}
+
+  /* =========================================================
+   CALENDAR STEPS SECTION
+========================================================= */
+
+.calendar-steps-section {
+  position: relative;
+  width: 100%;
+  height: var(--steps-section-height);
+  background: var(--steps-section-bg);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.calendar-steps-layout {
+  position: relative;
+  width: min(100%, 1440px);
+  height: 100%;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.calendar-steps-header {
+  position: absolute;
+  top: var(--steps-header-top);
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: var(--steps-header-width);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: var(--steps-header-gap);
+
+  text-align: center;
+}
+
+.calendar-steps-heading {
+  width: var(--steps-heading-width);
+
+  margin: 0;
+
+  color: var(--steps-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--steps-heading-size);
+  font-weight: var(--steps-heading-weight);
+  line-height: var(--steps-heading-line-height);
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+.calendar-steps-subtitle {
+  width: var(--steps-subtitle-width);
+
+  margin: 20px;
+
+  color: var(--steps-subtitle-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--steps-subtitle-size);
+  font-weight: var(--steps-subtitle-weight);
+  line-height: var(--steps-subtitle-line-height);
+  letter-spacing: 0.5px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   FLOW
+========================================================= */
+
+.calendar-steps-flow {
+  position: absolute;
+  top: 327px;
+  left: 0;
+
+  width: 100%;
+  height: 430px;
+}
+
+/* =========================================================
+   STEP COMMON
+========================================================= */
+
+.calendar-step {
+  position: absolute;
+}
+
+.calendar-step-visual {
+  position: relative;
+}
+
+.calendar-step-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.calendar-step-copy {
+  margin-top: 18px;
+}
+
+.calendar-step-copy h3 {
+  margin: 0;
+
+  color: var(--steps-title-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--steps-title-size);
+  font-weight: var(--steps-title-weight);
+  line-height: var(--steps-title-line-height);
+  letter-spacing: 0.2px;
+}
+
+.calendar-step-copy p {
+  margin: 2px;
+
+  color: var(--steps-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--steps-description-size);
+  font-weight: var(--steps-description-weight);
+  line-height: var(--steps-description-line-height);
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   STEP 1
+========================================================= */
+
+.calendar-step-one {
+  left: 143.16px;
+  top: 0;
+  width: var(--steps-step-one-width);
+}
+
+.calendar-step-visual-one {
+  width: var(--steps-step-one-image-width);
+  height: var(--steps-step-one-image-height);
+}
+
+/* =========================================================
+   STEP 2
+========================================================= */
+
+.calendar-step-two {
+  left: 455.59px;
+  top: 169px;
+  width: var(--steps-step-two-width);
+}
+
+.calendar-step-visual-two {
+  width: var(--steps-step-two-image-width);
+  height: var(--steps-step-two-image-height);
+}
+
+.calendar-step-two .calendar-step-copy {
+  margin-top: 12px;
+}
+
+/* =========================================================
+   STEP 3
+========================================================= */
+
+.calendar-step-three {
+  left: 759px;
+  top: 0;
+  width: var(--steps-step-three-width);
+}
+
+.calendar-step-visual-three {
+  width: var(--steps-step-three-image-width);
+  height: var(--steps-step-three-image-height);
+}
+
+/* =========================================================
+   STEP 4
+========================================================= */
+
+.calendar-step-four {
+  left: 1056.58px;
+  top: 169px;
+  width: var(--steps-step-four-width);
+}
+
+.calendar-step-visual-four {
+  width: var(--steps-step-four-image-width);
+  height: var(--steps-step-four-image-height);
+}
+
+.calendar-step-four .calendar-step-copy {
+  margin-top: 12px;
+}
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.calendar-step-arrow {
+  position: absolute;
+
+  display: block;
+
+  width: 138.88px;
+  height: 170.8px;
+
+  object-fit: contain;
+
+  opacity: 1;
+
+  pointer-events: none;
+}
+
+.calendar-step-arrow-one {
+  position: absolute;
+  width: 220px;
+  height: auto;
+ 
+
+  left: 379px;
+  top: 20px;
+
+  object-fit: contain;
+  transform: none;
+}
+
+.calendar-step-arrow-two {
+  width: 159px;
+  height: auto;
+
+  left: 700px;   /* left/right */
+  top: 330px;    /* up/down */
+
+  object-fit: contain;
+}
+
+.calendar-step-arrow-three {
+  position: absolute;
+  width: 159px;
+  height: auto;
+
+  left: 1000px;
+  top: 20px;
+
+  object-fit: contain;
+  transform: scaleY(-1);
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.calendar-steps-button {
+  position: absolute;
+
+  left: 50%;
+  bottom: 108px;
+
+  transform: translateX(-50%);
+
+  width: var(--steps-button-width);
+  height: var(--steps-button-height);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: var(--steps-button-radius);
+
+  background: var(--steps-button-bg);
+  color: var(--steps-button-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--steps-button-font-size);
+  font-weight: var(--steps-button-font-weight);
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .calendar-steps-section {
+    height: auto;
+    padding: 80px 24px;
+  }
+
+  .calendar-steps-layout {
+    width: min(100%, 900px);
+    height: auto;
+  }
+
+  .calendar-steps-header {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .calendar-steps-heading,
+  .calendar-steps-subtitle {
+    width: 100%;
+  }
+
+  .calendar-steps-flow {
+    position: static;
+
+    width: 100%;
+    height: auto;
+
+    margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 60px 40px;
+  }
+
+  .calendar-step {
+    position: static;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .calendar-step-copy {
+    margin-top: 18px;
+  }
+
+  .calendar-step-arrow {
+    display: none;
+  }
+
+  .calendar-steps-button {
+    position: static;
+
+    transform: none;
+
+    margin: 64px auto 0;
+
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .calendar-steps-section {
+    padding: 56px 16px;
+  }
+
+  .calendar-steps-heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .calendar-steps-heading br,
+  .calendar-steps-subtitle br,
+  .calendar-step-copy br {
+    display: none;
+  }
+
+  .calendar-steps-subtitle {
+    margin-top: 12px;
+
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .calendar-steps-flow {
+    grid-template-columns: 1fr;
+
+    gap: 54px;
+
+    margin-top: 56px;
+  }
+
+  .calendar-step-copy p {
+    max-width: 280px;
+  }
+}
+
+  /* =========================================================
+   SEE YOUR SCHEDULE AT A GLANCE
+========================================================= */
+
+.see-schedule-section {
+  position: relative;
+  width: 100%;
+  height: var(--schedule-glance-height);
+  background: var(--schedule-glance-bg);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.see-schedule-layout {
+  position: relative;
+  width: min(100%, 1440px);
+  height: 100%;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   BACKGROUND PATTERN
+========================================================= */
+
+.see-schedule-calendar {
+  position: absolute;
+  top: var(--schedule-glance-calendar-top);
+  left: var(--schedule-glance-calendar-left);
+  width: var(--schedule-glance-calendar-width);
+  height: var(--schedule-glance-calendar-height);
+  border-radius: var(--schedule-glance-calendar-radius);
+  overflow: hidden;
+
+  box-shadow: none;
+
+  z-index: 2;
+}
+
+.see-schedule-pattern {
+  position: absolute;
+
+  width: 883.58px;
+  height: 841.21px;
+
+  top: -110.92px;
+  left: 730.25px;
+
+  object-fit: contain;
+
+  opacity: 1;
+  transform: none;
+
+  pointer-events: none;
+
+  /* Dashboard se UPAR */
+  z-index: 3;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.see-schedule-header {
+  position: absolute;
+
+  top: var(--schedule-glance-header-top);
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: var(--schedule-glance-header-width);
+  height: var(--schedule-glance-header-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: var(--schedule-glance-header-gap);
+
+  text-align: center;
+
+  z-index: 4;
+}
+
+.see-schedule-heading {
+  width: var(--schedule-glance-heading-width);
+
+  margin: 0;
+
+  color: var(--schedule-glance-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-glance-heading-size);
+  font-weight: var(--schedule-glance-heading-weight);
+  line-height: var(--schedule-glance-heading-line-height);
+
+  letter-spacing: 0;
+
+  text-align: center;
+}
+
+.see-schedule-description {
+  width: var(--schedule-glance-description-width);
+
+  margin: 1px;
+
+  color: var(--schedule-glance-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-glance-description-size);
+  font-weight: var(--schedule-glance-description-weight);
+  line-height: var(--schedule-glance-description-line-height);
+
+  letter-spacing: 0.5px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   CALENDAR IMAGE
+========================================================= */
+
+.see-schedule-calendar {
+  position: absolute;
+
+  top: var(--schedule-glance-calendar-top);
+  left: var(--schedule-glance-calendar-left);
+
+  width: var(--schedule-glance-calendar-width);
+  height: var(--schedule-glance-calendar-height);
+
+  border-radius: var(--schedule-glance-calendar-radius);
+  overflow: hidden;
+
+  /* NO SHADOW */
+  box-shadow: none;
+
+  z-index: 2;
+}
+
+.see-schedule-calendar img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.see-schedule-button {
+  position: absolute;
+
+  top: var(--schedule-glance-button-top);
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: var(--schedule-glance-button-width);
+  height: var(--schedule-glance-button-height);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  border: 0;
+
+  border-radius: var(--schedule-glance-button-radius);
+
+  background: var(--schedule-glance-button-bg);
+  color: var(--schedule-glance-button-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--schedule-glance-button-size);
+  font-weight: var(--schedule-glance-button-weight);
+  line-height: 1;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  z-index: 4;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  .see-schedule-section {
+    height: auto;
+    padding: 80px 24px;
+  }
+
+  .see-schedule-layout {
+    width: min(100%, 1000px);
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .see-schedule-header,
+  .see-schedule-calendar,
+  .see-schedule-button {
+    position: relative;
+    inset: auto;
+
+    transform: none;
+  }
+
+  .see-schedule-header {
+    width: 100%;
+    height: auto;
+  }
+
+  .see-schedule-heading,
+  .see-schedule-description {
+    width: 100%;
+  }
+
+  .see-schedule-calendar {
+    width: 100%;
+    height: auto;
+
+    margin-top: 56px;
+  }
+
+  .see-schedule-calendar img {
+    width: 100%;
+    height: auto;
+  }
+
+  .see-schedule-button {
+    margin-top: 48px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .see-schedule-section {
+    padding: 56px 16px;
+  }
+
+  .see-schedule-heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .see-schedule-description {
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .see-schedule-description br {
+    display: none;
+  }
+
+  .see-schedule-calendar {
+    margin-top: 40px;
+  }
+
+  .see-schedule-button {
+    width: 190px;
+
+    margin-top: 36px;
+  }
+
+  .see-schedule-pattern {
+    width: 500px;
+    height: auto;
+
+    top: -100px;
+    left: 55%;
+  }}
+  /* =========================================================
+   INTEGRATION SECTION
+========================================================= */
+
+.integration-section {
+  position: relative;
+  width: 100%;
+  height: var(--integration-section-height);
+
+  background: var(--integration-section-bg);
+
+  font-family: var(--font-primary);
+
+  overflow: hidden;
+}
+
+.integration-layout {
+  position: relative;
+
+  width: min(100%, 1440px);
+  height: 100%;
+
+  margin-inline: auto;
+}
+
+/* =========================================================
+   LEFT COPY
+========================================================= */
+
+.integration-copy {
+  position: absolute;
+
+  top: var(--integration-content-top);
+  left: 150px;
+
+  width: var(--integration-content-width);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.integration-eyebrow {
+  width: max-content;
+  min-width: var(--integration-eyebrow-width);
+  height: var(--integration-eyebrow-height);
+
+  display: inline-flex;
+  align-items: flex-start;
+
+  border-bottom: 1px solid #000000;
+
+  color: var(--integration-eyebrow-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--integration-eyebrow-size);
+  font-weight: var(--integration-eyebrow-weight);
+  line-height: var(--integration-eyebrow-line-height);
+}
+
+.integration-heading {
+  width: var(--integration-heading-width);
+
+  margin: 24px 0 0;
+
+  color: var(--integration-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--integration-heading-size);
+  font-weight: var(--integration-heading-weight);
+  line-height: var(--integration-heading-line-height);
+
+  letter-spacing: 0;
+}
+
+.integration-description {
+  width: var(--integration-description-width);
+
+  margin: 15px 0 0;
+
+  color: var(--integration-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--integration-description-size);
+  font-weight: var(--integration-description-weight);
+  line-height: var(--integration-description-line-height);
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   RIGHT GRID
+========================================================= */
+
+.integration-tools {
+  position: absolute;
+
+  top: 121px;
+  left: 603px;
+
+  width: var(--integration-tools-width);
+  min-height: var(--integration-tools-height);
+
+  display: grid;
+
+  grid-template-columns:
+    196.43px
+    138.93px
+    196.43px;
+
+  grid-auto-rows: var(--integration-card-height);
+
+  column-gap: var(--integration-tools-gap-x);
+  row-gap: 36px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.integration-card {
+  height: var(--integration-card-height);
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--integration-card-gap);
+
+  padding:
+    var(--integration-card-padding-y)
+    var(--integration-card-padding-x);
+
+  border: 0.8px solid var(--integration-card-border);
+  border-radius: var(--integration-card-radius);
+
+  background: var(--integration-card-bg);
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06);
+
+  color: var(--integration-card-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--integration-card-font-size);
+  font-weight: var(--integration-card-font-weight);
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.integration-card-icon {
+  display: block;
+
+  width: var(--integration-card-icon-size);
+  height: var(--integration-card-icon-size);
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   GRID POSITIONS
+========================================================= */
+
+.integration-tools {
+  position: absolute;
+  top: 121px;
+  left: 603px;
+
+  width: 691px;
+  min-height: 261px;
+
+  display: grid;
+  grid-template-columns: 196.43px 138.93px 138.93px 138.93px;
+  grid-auto-rows: 63px;
+
+  column-gap: 16px;
+  row-gap: 36px;
+}
+
+.integration-card-google {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.integration-card-zoom {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.integration-card-outlook {
+  grid-column: 3;
+  grid-row: 1;
+  width: 206px;
+}
+
+.integration-card-stripe {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.integration-card-gmail {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.integration-card-teams {
+  grid-column: 3;
+  grid-row: 2;
+  width: 138.93px;
+}
+
+.integration-card-meet {
+  grid-column: 4;
+  grid-row: 2;
+  width: 138.93px;
+}
+
+.integration-card-slack {
+  grid-column: 1;
+  grid-row: 3;
+  width: 138.93px;
+}
+
+.integration-card-notion {
+  grid-column: 2;
+  grid-row: 3;
+  width: 138.93px;
+}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .integration-section {
+    height: auto;
+    padding: 80px 24px;
+  }
+
+  .integration-layout {
+    width: min(100%, 950px);
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+
+    gap: 56px;
+
+    align-items: center;
+  }
+
+  .integration-copy,
+  .integration-tools {
+    position: static;
+
+    width: 100%;
+  }
+
+  .integration-heading,
+  .integration-description {
+    width: 100%;
+  }
+
+  .integration-tools {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 16px;
+  }
+
+  .integration-card,
+  .integration-card-teams,
+  .integration-card-meet,
+  .integration-card-slack,
+  .integration-card-notion {
+    position: static;
+
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .integration-section {
+    padding: 56px 16px;
+  }
+
+  .integration-layout {
+    width: min(100%, 600px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 48px;
+  }
+
+  .integration-heading {
+    font-size: 34px;
+    line-height: 43px;
+  }
+
+  .integration-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .integration-description br {
+    display: none;
+  }
+
+  .integration-tools {
+    gap: 12px;
+  }
+
+  .integration-card {
+    height: 58px;
+  }
+}
+  /* =========================================================
+   FAQ SECTION
+========================================================= */
+
+.scheduler-faq-section {
+  width: 100%;
+  height: var(--faq-section-height);
+
+  background: var(--faq-section-bg);
+
+  font-family: var(--font-primary);
+}
+
+.scheduler-faq-layout {
+  width: min(100%, 1440px);
+  height: 100%;
+
+  margin-inline: auto;
+
+  padding:
+    var(--faq-section-padding-top)
+    var(--faq-section-padding-x)
+    var(--faq-section-padding-bottom);
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.scheduler-faq-heading {
+  width: var(--faq-heading-width);
+
+  margin: 0;
+
+  color: var(--faq-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--faq-heading-size);
+  font-weight: var(--faq-heading-weight);
+  line-height: var(--faq-heading-line-height);
+
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.scheduler-faq-list {
+  width: var(--faq-list-width);
+
+  margin-top: var(--faq-heading-list-gap);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--faq-list-gap);
+}
+
+/* =========================================================
+   FAQ ITEM
+========================================================= */
+
+.scheduler-faq-item {
+  width: 100%;
+  min-height: var(--faq-item-height);
+
+  overflow: hidden;
+
+  background: var(--faq-item-bg);
+
+  border:
+    var(--faq-item-border-width)
+    solid
+    var(--faq-item-border);
+
+  border-radius: var(--faq-item-radius);
+
+  box-sizing: border-box;
+
+  transition:
+    min-height 180ms ease,
+    height 180ms ease;
+}
+
+.scheduler-faq-item-open {
+  min-height: var(--faq-item-open-height);
+}
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.scheduler-faq-question {
+  width: 100%;
+  min-height: 68px;
+
+  padding: 20px 22px 20px 21px;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  color: var(--faq-question-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--faq-question-size);
+  font-weight: var(--faq-question-weight);
+  line-height: var(--faq-question-line-height);
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.scheduler-faq-question span {
+  flex: 1;
+}
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.scheduler-faq-arrow {
+  width: 10px;
+  height: 6px;
+
+  flex-shrink: 0;
+
+  color: #0a0a0a;
+
+  transition: transform 180ms ease;
+}
+
+.scheduler-faq-arrow-open {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+.scheduler-faq-answer {
+  padding: 0 22px 21px 21px;
+}
+
+.scheduler-faq-answer p {
+  max-width: 1066px;
+
+  margin: 0;
+
+  color: var(--faq-answer-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--faq-answer-size);
+  font-weight: var(--faq-answer-weight);
+  line-height: var(--faq-answer-line-height);
+
+  letter-spacing: 0;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  .scheduler-faq-section {
+    height: auto;
+  }
+
+  .scheduler-faq-layout {
+    padding: 72px 48px;
+  }
+
+  .scheduler-faq-list {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .scheduler-faq-layout {
+    padding: 56px 16px;
+  }
+
+  .scheduler-faq-heading {
+    width: 100%;
+
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .scheduler-faq-list {
+    margin-top: 48px;
+    gap: 12px;
+  }
+
+  .scheduler-faq-question {
+    padding: 18px 16px;
+
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .scheduler-faq-answer {
+    padding: 0 16px 18px;
+  }
+
+  .scheduler-faq-answer p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .scheduler-faq-item-open {
+    min-height: auto;
+  }
+}
+  /* =========================================================
+   CALENDAR CTA SECTION
+========================================================= */
+
+.calendar-cta-section {
+  position: relative;
+
+  width: 100%;
+  height: var(--calendar-cta-height);
+
+  background: var(--calendar-cta-bg);
+
+  overflow: hidden;
+
+  font-family: var(--font-primary);
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.calendar-cta-layout {
+  position: relative;
+
+  width: min(100%, 1440px);
+  height: 100%;
+
+  margin-inline: auto;
+}
+
+/* =========================================================
+   BACKGROUND PATTERN
+========================================================= */
+
+.calendar-cta-pattern {
+  position: absolute;
+
+  width: 495.28px;
+  height: 528.51px;
+
+  top: -40.28px;
+  right: -80px;
+
+  max-width: none;
+
+  object-fit: contain;
+
+  opacity: 1;
+
+  transform: rotate(2.63deg);
+  transform-origin: center;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.calendar-cta-content {
+  position: absolute;
+
+  top: var(--calendar-cta-content-top);
+  left: var(--calendar-cta-content-left);
+
+  width: var(--calendar-cta-content-width);
+
+  z-index: 2;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.calendar-cta-heading {
+  width: var(--calendar-cta-heading-width);
+
+  margin: 0;
+
+  color: var(--calendar-cta-heading-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-cta-heading-size);
+  font-weight: var(--calendar-cta-heading-weight);
+  line-height: var(--calendar-cta-heading-line-height);
+
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.calendar-cta-description {
+  width: var(--calendar-cta-description-width);
+
+  margin: 12px 0 0;
+
+  color: var(--calendar-cta-description-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--calendar-cta-description-size);
+  font-weight: var(--calendar-cta-description-weight);
+  line-height: var(--calendar-cta-description-line-height);
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.calendar-cta-divider {
+  width: 406px;
+  height: 0.76px;
+
+  margin-top: 12px;
+
+  background: #f3f4f6;
+}
+
+/* =========================================================
+   APP ICONS
+========================================================= */
+
+.calendar-cta-apps {
+  margin-top: 23px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* =========================================================
+   GOOGLE / OUTLOOK / TEAMS BOX
+========================================================= */
+
+.calendar-cta-app {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   NORMAL ICON IMAGE
+========================================================= */
+
+.calendar-cta-app img {
+  display: block;
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   GOOGLE ICON
+========================================================= */
+
+.calendar-cta-google-icon {
+  width: 18.84px !important;
+  height: 18.63px !important;
+}
+
+/* =========================================================
+   OUTLOOK ICON
+========================================================= */
+
+.calendar-cta-outlook-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* =========================================================
+   TEAMS ICON
+========================================================= */
+
+.calendar-cta-teams-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.calendar-cta-arrow {
+  width: 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   AEON CALENDAR BOX
+========================================================= */
+
+.calendar-cta-main-app {
+  width: 40px;
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #1c8c8c;
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   AEON CALENDAR ICON
+========================================================= */
+
+.calendar-cta-main-icon {
+  display: block;
+
+  width: 24.79px;
+  height: 24.79px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.calendar-cta-form {
+  position: absolute;
+
+  top: var(--calendar-cta-form-top);
+  left: var(--calendar-cta-form-left);
+
+  width: var(--calendar-cta-form-width);
+  height: var(--calendar-cta-form-height);
+
+  padding: 32px 26px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--calendar-cta-form-bg);
+
+  border-radius: var(--calendar-cta-form-radius);
+
+  box-shadow:
+    0 4px 25.9px rgba(0, 0, 0, 0.25);
+
+  z-index: 3;
+}
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
+
+.calendar-cta-field {
+  width: 100%;
+}
+
+.calendar-cta-field + .calendar-cta-field {
+  margin-top: 12px;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.calendar-cta-field label {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 4px;
+
+  color: var(--calendar-cta-label-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--calendar-cta-label-size);
+  font-weight: 400;
+  line-height: var(--calendar-cta-label-line-height);
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.calendar-cta-field input {
+  width: var(--calendar-cta-input-width);
+  height: var(--calendar-cta-input-height);
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(94, 132, 125, 0.3);
+
+  border-radius: var(--calendar-cta-input-radius);
+
+  background: rgba(18, 122, 102, 0.08);
+
+  outline: none;
+
+  color: #183336;
+
+  font-family: var(--font-primary);
+
+  font-size: var(--calendar-cta-placeholder-size);
+  font-weight: var(--calendar-cta-placeholder-weight);
+  line-height: var(--calendar-cta-placeholder-line-height);
+}
+
+.calendar-cta-field input::placeholder {
+  color: var(--calendar-cta-placeholder-color);
+
+  opacity: 1;
+}
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.calendar-cta-field input:focus {
+  border-color: rgba(28, 140, 140, 0.55);
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.calendar-cta-submit {
+  width: var(--calendar-cta-button-width);
+  height: var(--calendar-cta-button-height);
+
+  margin-top: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: var(--calendar-cta-button-bg);
+  color: var(--calendar-cta-button-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--calendar-cta-button-size);
+  font-weight: var(--calendar-cta-button-weight);
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.calendar-cta-submit:hover {
+  opacity: 0.94;
+}
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.calendar-cta-secure {
+  width: 100%;
+
+  margin: 15px 0 0;
+
+  color: var(--calendar-cta-note-color);
+
+  font-family: var(--font-primary);
+
+  font-size: var(--calendar-cta-note-size);
+  font-weight: 400;
+  line-height: var(--calendar-cta-note-line-height);
+
+  text-align: center;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  .calendar-cta-section {
+    height: auto;
+
+    padding: 80px 24px;
+  }
+
+  .calendar-cta-layout {
+    width: min(100%, 1000px);
+    height: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 56px;
+
+    align-items: center;
+  }
+
+  .calendar-cta-content,
+  .calendar-cta-form {
+    position: static;
+
+    width: 100%;
+  }
+
+  .calendar-cta-form {
+    height: auto;
+  }
+
+  .calendar-cta-field input,
+  .calendar-cta-submit {
+    width: 100%;
+  }
+
+  .calendar-cta-pattern {
+    width: 460px;
+    height: auto;
+
+    top: -170px;
+    right: -160px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .calendar-cta-section {
+    padding: 56px 16px;
+  }
+
+  .calendar-cta-layout {
+    display: flex;
+    flex-direction: column;
+
+    gap: 44px;
+  }
+
+  .calendar-cta-content {
+    width: 100%;
+  }
+
+  .calendar-cta-heading {
+    width: 100%;
+
+    font-size: 34px;
+    line-height: 43px;
+  }
+
+  .calendar-cta-description {
+    width: 100%;
+
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .calendar-cta-description br {
+    display: none;
+  }
+
+  .calendar-cta-divider {
+    width: 100%;
+  }
+
+  .calendar-cta-form {
+    width: 100%;
+
+    padding: 20px;
+
+    border-radius: 12px;
+  }
+
+  .calendar-cta-pattern {
+    width: 420px;
+    height: auto;
+
+    top: -80px;
+    right: -180px;
+  }
+
+  .calendar-cta-apps {
+    gap: 10px;
+  }
+
+  .calendar-cta-app {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .calendar-cta-main-app {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+  }
+}
+  /* ========================================
+   GET STARTED SECTION
+======================================== */
+
+.get-started-section {
+  width: 100%;
+  height: var(--get-started-height);
+
+  background: var(--get-started-bg);
+}
+
+.get-started-layout {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding:
+    var(--get-started-padding-y)
+    var(--get-started-padding-x);
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* ========================================
+   LEFT CONTENT
+======================================== */
+
+.get-started-content {
+  width: var(--get-started-content-width);
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.get-started-copy {
+  width: 100%;
+}
+
+.get-started-heading {
+  margin: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--get-started-heading-size);
+  font-weight: var(--get-started-heading-weight);
+  line-height: var(--get-started-heading-line);
+  letter-spacing: 0;
+
+  color: #ffffff;
+}
+
+.get-started-description {
+  width: 402px;
+
+  margin: 10px 0 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--get-started-description-size);
+
+  line-height: var(--get-started-description-line);
+  font-weight: var(--get-started-description-weight);
+
+
+  color: #ffffff;
+}
+
+.get-started-trial {
+  width: 188px;
+  height: 51px;
+
+  padding: 16px 24px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: var(--get-started-dark);
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 520;
+  line-height: 16px;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   RIGHT FORM
+======================================== */
+
+.get-started-form {
+  width: var(--get-started-form-width);
+  height: var(--get-started-form-height);
+
+  padding: 28px 26px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border-radius: var(--get-started-form-radius);
+
+  box-shadow:
+    0 4px 25.9px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ========================================
+   NAME ROW
+======================================== */
+
+.get-started-name-row {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.get-started-name-row input,
+.get-started-full-input {
+  height: var(--get-started-input-height);
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  background: var(--get-started-input-bg);
+
+  border:
+    1px solid
+    var(--get-started-input-border);
+
+  border-radius: var(--get-started-input-radius);
+
+  outline: none;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 29px;
+
+  color: var(--get-started-placeholder);
+}
+
+.get-started-name-row input::placeholder,
+.get-started-full-input::placeholder {
+  color: var(--get-started-placeholder);
+  opacity: 1;
+}
+
+
+/* ========================================
+   EMAIL
+======================================== */
+
+.get-started-full-input {
+  width: 100%;
+  margin-top: 16px;
+}
+
+
+/* ========================================
+   COMPANY SIZE
+======================================== */
+
+.get-started-company-size {
+  width: 100%;
+  height: 110px;
+
+  margin-top: 16px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background: var(--get-started-input-bg);
+
+  border:
+    1px solid
+    var(--get-started-input-border);
+
+  border-radius: 10px;
+}
+
+.get-started-company-label {
+  height: 43px;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+
+  color: var(--get-started-dark);
+}
+
+.get-started-size-options {
+  width: calc(100% - 26px);
+  height: 40px;
+
+  margin: 0 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.get-started-size-pill {
+  height: 40px;
+
+  padding: 10px 14px;
+
+  flex: 1;
+
+  white-space: nowrap;
+
+  border: 0;
+  border-radius: 46px;
+
+  background: rgba(18, 122, 102, 0.08);
+
+  color: var(--get-started-dark);
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+
+  cursor: pointer;
+}
+
+.get-started-size-pill.active {
+  background: var(--get-started-green);
+  color: #ffffff;
+}
+
+
+/* ========================================
+   SELECTS
+======================================== */
+
+.get-started-select-row {
+  width: 100%;
+
+  margin-top: 16px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.get-started-select-box {
+  height: 95px;
+
+  overflow: hidden;
+
+  background: var(--get-started-input-bg);
+
+  border:
+    1px solid
+    var(--get-started-input-border);
+
+  border-radius: 10px;
+}
+
+.get-started-select-box label {
+  height: 48px;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+
+  color: var(--get-started-dark);
+}
+
+.get-started-select-box select {
+  width: 300px;
+  height: 47px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-top: 1px solid rgba(95, 132, 125, 0.18);
+
+  background: #ffffff;
+
+  outline: none;
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+
+  color: var(--get-started-dark);
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   AGREEMENT
+======================================== */
+
+.get-started-agreement {
+  margin: 16px 0 0;
+
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+
+  color: #687c77;
+}
+
+.get-started-agreement a {
+  color: var(--get-started-green);
+  text-decoration: none;
+}
+
+
+/* ========================================
+   SUBMIT
+======================================== */
+
+.get-started-submit {
+  width: 160px;
+  height: 51px;
+
+  margin-top: 26px;
+
+  padding: 16px 24px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--get-started-dark);
+  color: #ffffff;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .get-started-section {
+    height: auto;
+  }
+
+  .get-started-layout {
+    padding: 64px 24px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 50px;
+  }
+
+  .get-started-content,
+  .get-started-description {
+    width: 100%;
+  }
+
+  .get-started-form {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .get-started-heading {
+    font-size: 38px;
+    line-height: 50px;
+  }
+
+  .get-started-description {
+    font-size: 18px;
+    line-height: 29px;
+  }
+
+  .get-started-description br {
+    display: none;
+  }
+
+  .get-started-name-row,
+  .get-started-select-row {
+    grid-template-columns: 1fr;
+  }
+
+  .get-started-size-options {
+    height: auto;
+
+    flex-wrap: wrap;
+  }
+
+  .get-started-company-size {
+    height: auto;
+    padding-bottom: 12px;
+  }
+
+  .get-started-size-pill {
+    flex: none;
+  }
+}
+  /* =========================================================
+   TESTIMONIALS SECTION
+========================================================= */
+
+.testimonials-section {
+  width: 100%;
+  min-height: var(--testimonials-section-height);
+  background: #ffffff;
+  font-family: var(--font-primary);
+}
+
+.testimonials-container {
+  width: 100%;
+  max-width: var(--testimonials-container-width);
+  min-height: var(--testimonials-section-height);
+
+  margin: 0 auto;
+  padding-top: 82px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.testimonials-header {
+  width: 1186px;
+  max-width: calc(100% - 48px);
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonials-header h2 {
+  margin: 8px;
+
+  font-family: var(--font-primary);
+  font-size: var(--testimonials-heading-size);
+  font-weight: var(--testimonials-heading-weight);
+  line-height: var(--testimonials-heading-line-height);
+  letter-spacing: 1px;
+
+  color: var(--testimonials-heading-color);
+}
+
+.testimonials-header p {
+  margin: 15px 0 0;
+    letter-spacing: 0.5px;
+
+  font-family: var(--font-primary);
+  font-size: var(--testimonials-description-size);
+  font-weight: var(--testimonials-description-weight);
+  line-height: var(--testimonials-description-line-height);
+
+  color: var(--testimonials-description-color);
+}
+
+/* =========================
+   CARDS WRAPPER
+========================= */
+
+.testimonials-grid {
+  width: var(--testimonials-content-width);
+  max-width: calc(100% - 48px);
+
+  margin: 100px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, var(--testimonial-card-width));
+  gap: var(--testimonial-card-gap);
+
+  justify-content: center;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.testimonial-card {
+  position: relative;
+
+  width: var(--testimonial-card-width);
+  height: var(--testimonial-card-height);
+
+  border-radius: var(--testimonial-card-radius);
+
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.testimonial-card-light {
+  background: var(--testimonial-card-light-bg);
+}
+
+.testimonial-card-teal {
+  background: var(--testimonial-card-teal-bg);
+}
+
+/* =========================
+   AVATAR
+========================= */
+
+.testimonial-avatar {
+  position: absolute;
+
+  top: -46px;
+  left: 22px;
+
+  width: var(--testimonial-avatar-size);
+  height: var(--testimonial-avatar-size);
+
+  box-sizing: border-box;
+
+  border: var(--testimonial-avatar-border);
+  border-radius: 50%;
+
+  background: var(--testimonial-avatar-bg);
+
+  box-shadow: var(--testimonial-avatar-shadow);
+
+  z-index: 2;
+}
+
+/* =========================
+   REVIEW TEXT
+========================= */
+
+.testimonial-review {
+  height: 160px;
+
+  padding: 36px 22px 10px;
+
+  box-sizing: border-box;
+}
+
+.testimonial-review p {
+  margin: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--testimonial-review-size);
+  font-weight: 400;
+  line-height: var(--testimonial-review-line-height);
+
+  color: var(--testimonial-review-color);
+}
+
+/* =========================
+   CARD FOOTER
+========================= */
+
+.testimonial-footer {
+  position: absolute;
+
+  left: 0;
+  bottom: 18px;
+
+  width: calc(100% - 22px);
+  min-height: 86px;
+
+  padding: 10px 17px;
+
+  box-sizing: border-box;
+
+  background: var(--testimonial-footer-bg);
+
+  border-radius: 0 20px 20px 0;
+}
+
+.testimonial-person h3 {
+  margin: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--testimonial-name-size);
+  font-weight: var(--testimonial-name-weight);
+  line-height: var(--testimonial-name-line-height);
+
+  color: var(--testimonial-review-color);
+}
+
+.testimonial-person p {
+  margin: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--testimonial-role-size);
+  font-weight: var(--testimonial-role-weight);
+  line-height: var(--testimonial-role-line-height);
+
+  color: #000000;
+}
+
+/* =========================
+   STARS
+========================= */
+
+.testimonial-stars {
+  display: flex;
+  align-items: center;
+
+  margin-top: 5px;
+}
+
+.testimonial-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--testimonial-star-size);
+  height: 19px;
+
+  font-size: 22px;
+  line-height: 19px;
+
+  color: var(--testimonial-star-color);
+}
+
+.testimonial-half-star {
+  width: 10px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .testimonials-section,
+  .testimonials-container {
+    min-height: auto;
+  }
+
+  .testimonials-container {
+    padding: 80px 24px 100px;
+  }
+
+  .testimonials-grid {
+    width: 100%;
+
+    grid-template-columns: repeat(
+      2,
+      var(--testimonial-card-width)
+    );
+
+    row-gap: 80px;
+  }
+}
+
+@media (max-width: 650px) {
+  .testimonials-container {
+    padding: 60px 20px 80px;
+  }
+
+  .testimonials-header {
+    max-width: 100%;
+  }
+
+  .testimonials-header h2 {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .testimonials-header p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .testimonials-desktop-break {
+    display: none;
+  }
+
+  .testimonials-grid {
+    max-width: 100%;
+
+    grid-template-columns: var(--testimonial-card-width);
+
+    margin-top: 90px;
+  }
+
+}
+  /* =========================================================
+   PRICING SECTION
+========================================================= */
+
+.pricing-section {
+  width: 100%;
+  min-height: var(--pricing-section-height);
+
+  background: #ffffff;
+
+  font-family: var(--font-primary);
+}
+
+.pricing-container {
+  width: 100%;
+  max-width: var(--pricing-container-width);
+
+  min-height: var(--pricing-section-height);
+
+  margin: 0 auto;
+
+  padding-top: 101px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.pricing-header {
+  width: 1186px;
+  max-width: calc(100% - 48px);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.pricing-heading {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: var(--pricing-heading-size);
+  font-weight: var(--pricing-heading-weight);
+  line-height: var(--pricing-heading-line);
+
+  letter-spacing: 0;
+
+  color: var(--pricing-heading-color);
+}
+
+.pricing-description {
+  margin: 15px 0 0;
+
+  font-family: var(--font-primary);
+
+  font-size: var(--pricing-description-size);
+  font-weight: var(--pricing-description-weight);
+  line-height: var(--pricing-description-line);
+
+  letter-spacing: 0;
+
+  color: var(--pricing-description-color);
+}
+
+
+/* =========================================================
+   USAGE BAR
+========================================================= */
+
+.pricing-usage-bar {
+  width: var(--pricing-usage-width);
+
+  margin: 44px auto 0;
+
+  padding: 16px 28px;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  background: #ffffff;
+
+  border: 1px solid rgba(64, 80, 92, 0.12);
+  border-radius: 10px;
+}
+
+.pricing-usage-item {
+  padding-right: 28px;
+
+  box-sizing: border-box;
+}
+
+.pricing-usage-item:not(:last-child) {
+  border-right: 1px solid var(--pricing-green);
+}
+
+.pricing-usage-item:not(:first-child) {
+  padding-left: 28px;
+}
+
+.pricing-usage-text {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.pricing-usage-text span {
+  font-family: var(--font-primary);
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 15px;
+
+  color: #424d4f;
+}
+
+.pricing-usage-text strong {
+  font-family: var(--font-primary);
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 17px;
+
+  color: #183336;
+}
+
+.pricing-progress-track {
+  position: relative;
+
+  width: 100%;
+  height: 4px;
+
+  margin-top: 8px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #e4eeee;
+}
+
+.pricing-progress-value {
+  display: block;
+
+  height: 100%;
+
+  min-width: 22px;
+
+  border-radius: 10px;
+
+  background: var(--pricing-green);
+}
+
+
+/* =========================================================
+   CARDS WRAPPER
+========================================================= */
+
+.pricing-cards {
+  width: var(--pricing-main-width);
+
+  margin: 43px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.pricing-card {
+  position: relative;
+
+  width: 100%;
+  height: var(--pricing-card-height);
+
+  padding: 30px 26px 26px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: var(--pricing-card-bg);
+
+  border: 0.75px solid var(--pricing-border-color);
+
+  border-radius: var(--pricing-card-radius);
+
+  box-shadow:
+    0 0.94px 2.83px rgba(24, 51, 54, 0.04),
+    0 1.88px 11.3px rgba(24, 51, 54, 0.06);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   PRO DEFAULT DARK CARD
+========================================================= */
+
+.pricing-card-featured {
+  background: var(--pricing-card-dark);
+
+  box-shadow:
+    0 10px 28px rgba(24, 51, 54, 0.16);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.pricing-card:hover {
+  background: var(--pricing-card-dark);
+
+  box-shadow:
+    0 10px 28px rgba(24, 51, 54, 0.16);
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.pricing-plan-heading-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.pricing-plan-name {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+
+  color: #183336;
+
+  transition: color 0.25s ease;
+}
+
+.pricing-card-featured .pricing-plan-name,
+.pricing-card:hover .pricing-plan-name {
+  color: var(--pricing-accent);
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.pricing-badge {
+  padding: 4px 10px;
+
+  border: 1px solid var(--pricing-price-color);
+
+  border-radius: 999px;
+
+  font-family: var(--font-primary);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: var(--pricing-green);
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.pricing-card:hover .pricing-badge {
+  color: var(--pricing-accent);
+
+  border-color: var(--pricing-accent);
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.pricing-price-row {
+  display: flex;
+
+  align-items: flex-end;
+
+  margin-top: 6px;
+}
+
+.pricing-price {
+  font-family: var(--font-primary);
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+
+  letter-spacing: 0;
+
+  color: var(--pricing-price-color);
+}
+
+.pricing-period {
+  margin-left: 5px;
+  margin-bottom: 7px;
+
+  font-family: var(--font-primary);
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+
+  color: #95a2aa;
+
+  transition: color 0.25s ease;
+}
+
+.pricing-card-featured .pricing-period,
+.pricing-card:hover .pricing-period {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   SEAT PRICE
+========================================================= */
+
+.pricing-seat-price {
+  margin: 2px 0 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+
+  color: #183336;
+
+  transition: color 0.25s ease;
+}
+
+.pricing-card-featured .pricing-seat-price,
+.pricing-card:hover .pricing-seat-price {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.pricing-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 20px 0 14px;
+
+  background: rgba(24, 51, 54, 0.18);
+
+  transition: background-color 0.25s ease;
+}
+
+.pricing-card-featured .pricing-divider,
+.pricing-card:hover .pricing-divider {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   INCLUDED TITLE
+========================================================= */
+
+.pricing-included-title {
+  margin: 0 0 14px;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+
+  color: #183336;
+
+  transition: color 0.25s ease;
+}
+
+.pricing-card-featured .pricing-included-title,
+.pricing-card:hover .pricing-included-title {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.pricing-features {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.pricing-features li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 7px;
+
+  margin-bottom: 8px;
+
+  font-family: var(--font-primary);
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: #183336;
+
+  transition: color 0.25s ease;
+}
+
+.pricing-check {
+  color: var(--pricing-price-color);
+
+  font-weight: 700;
+}
+
+.pricing-card-featured .pricing-features li,
+.pricing-card:hover .pricing-features li {
+  color: #ffffff;
+}
+
+.pricing-card-featured .pricing-check,
+.pricing-card:hover .pricing-check {
+  color: #8fc8ca;
+}
+
+
+/* =========================================================
+   CARD BUTTON
+========================================================= */
+
+.pricing-card-button {
+  width: 100%;
+  height: 51px;
+
+  padding: 11px 15px;
+
+  border: 0.75px solid var(--pricing-green);
+
+  border-radius: 7.54px;
+
+  background: #ffffff;
+
+  color: var(--pricing-dark-green);
+
+  font-family: var(--font-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* Pro default button */
+.pricing-card-featured .pricing-card-button {
+  background: var(--pricing-accent);
+
+  border-color: var(--pricing-accent);
+
+  color: #183336;
+}
+
+
+/* Any card hover button */
+.pricing-card:hover .pricing-card-button {
+  background: var(--pricing-accent);
+
+  border-color: var(--pricing-accent);
+
+  color: #183336;
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.pricing-bottom-cta {
+  width: var(--pricing-main-width);
+  min-height: 95px;
+
+  margin: 50px auto 0;
+
+  padding: 25px 29px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--pricing-bottom-bg);
+
+  border-radius: 14.55px;
+}
+
+.pricing-bottom-copy h3 {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+
+  color: #183336;
+}
+
+.pricing-bottom-copy p {
+  margin: 2px 0 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: #424d4f;
+}
+
+.pricing-get-started {
+  min-width: 126px;
+  height: 37px;
+
+  padding: 9px 18px;
+
+  border: 0;
+
+  border-radius: 7.28px;
+
+  background: var(--pricing-green);
+
+  color: #ffffff;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .pricing-section,
+  .pricing-container {
+    min-height: auto;
+  }
+
+  .pricing-container {
+    padding: 80px 24px;
+  }
+
+  .pricing-usage-bar,
+  .pricing-cards,
+  .pricing-bottom-cta {
+    width: 100%;
+  }
+
+  .pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 650px) {
+  .pricing-heading {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .pricing-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .pricing-heading br,
+  .pricing-description br {
+    display: none;
+  }
+
+  .pricing-usage-bar {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .pricing-usage-item,
+  .pricing-usage-item:not(:first-child) {
+    padding: 0;
+
+    border-right: 0;
+  }
+
+  .pricing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-bottom-cta {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+}
+/* =========================================================
+   SCHEDULING MADE SIMPLE
+========================================================= */
+
+.schedule-simple {
+  width: 100%;
+  background:#F9F9F9;
+  font-family: var(--font-primary);
+}
+
+.schedule-simple__inner {
+  position: relative;
+
+  width: 100%;
+  max-width: 1440px;
+  height: 1362px;
+
+  margin: 0 auto;
+
+  padding-top: 103px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.schedule-simple__header {
+  width: 682px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.schedule-simple__header h2 {
+  width: 682px;
+
+  margin: 0;
+
+  font-family: var(--font-primary);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: 0;
+
+  text-align: center;
+
+  color: #183336;
+}
+
+.schedule-simple__header p {
+  width: 668.99px;
+
+  margin: 20px auto;
+
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 29px;
+  letter-spacing: 0.5px;
+
+  text-align: center;
+
+  color: #424d4f;
+}
+
+
+/* =========================================================
+   BENTO WRAPPER
+
+   FIGMA:
+   width: 1141px
+   top: 338px
+   left: 150px
+   gap: 20px
+========================================================= */
+
+.schedule-bento {
+  width: 1141px;
+  height: 775px;
+
+  margin: 114px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 367px);
+
+  gap: 20px;
+}
+
+.schedule-bento__column {
+  width: 367px;
+  height: 772px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.schedule-card,
+.schedule-photo {
+  position: relative;
+
+  width: 367px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+}
+
+.schedule-card__content {
+  position: relative;
+
+  z-index: 3;
+}
+
+.schedule-card h3 {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+
+  letter-spacing: 0;
+}
+
+.schedule-card p {
+  margin: 12px 0 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+
+  letter-spacing: 0;
+}
+
+
+/* =========================================================
+   STAY ORGANIZED
+   FIGMA: 367 × 255
+========================================================= */
+
+.schedule-card--organized {
+  height: 255px;
+
+  padding: 65px 32px 30px;
+
+  background: #046363;
+
+  color: #ffffff;
+}
+
+.schedule-card--organized h3 {
+  color: #ffffff;
+}
+
+.schedule-card--organized p {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   STAY ORGANIZED - ACTUAL PATTERN IMAGE
+========================================================= */
+
+.schedule-arch-pattern {
+  position: absolute;
+
+  top: 0;
+  right: -1px;
+
+  width: 132px;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  opacity: 0.5;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ONE VIEW
+========================================================= */
+
+.schedule-card--one-view {
+  height: 497px;
+
+  padding: 267px 32px 30px;
+
+  background: #e8f1ef;
+
+  color: #000000;
+}
+
+.schedule-card--one-view h3 {
+  color: #000000;
+}
+
+.schedule-card--one-view p {
+  color: #183336;
+}
+
+
+/* =========================================================
+   CALENDAR ICON
+========================================================= */
+
+.schedule-calendar-icon {
+  position: absolute;
+
+  width: 190px;
+  height: 190px;
+
+  top: 9px;
+  left: 225px;
+
+  opacity: 0.16;
+}
+
+.schedule-calendar-icon__body {
+  position: absolute;
+
+  width: 155px;
+  height: 125px;
+
+  left: 10px;
+  top: 42px;
+
+  border: 15px solid #55a99f;
+
+  border-radius: 28px;
+
+  box-sizing: border-box;
+}
+
+.schedule-calendar-icon__body span {
+  position: absolute;
+
+  width: 155px;
+  height: 15px;
+
+  top: 25px;
+  left: -15px;
+
+  background: #55a99f;
+}
+
+.schedule-calendar-icon__ring {
+  position: absolute;
+
+  width: 17px;
+  height: 48px;
+
+  top: 5px;
+
+  border-radius: 20px;
+
+  background: #55a99f;
+
+  z-index: 2;
+}
+
+.schedule-calendar-icon__ring--one {
+  left: 47px;
+}
+
+.schedule-calendar-icon__ring--two {
+  left: 132px;
+}
+
+
+/* =========================================================
+   SAVE TIME
+   FIGMA: 367 × 486
+========================================================= */
+
+.schedule-card--save {
+  height: 486px;
+
+  padding: 294px 32px 30px;
+
+  background: rgba(31, 184, 192, 0.2);
+
+  color: #183336;
+}
+
+.schedule-card--save h3 {
+  color: #183336;
+}
+
+.schedule-card--save p {
+  color: #183336;
+}
+
+
+/* =========================================================
+   CLOCK ICON
+========================================================= */
+
+.schedule-clock {
+  position: absolute;
+
+  width: 186.46px;
+  height: 186.46px;
+
+  top: 33.54px;
+  left: 235.14px;
+
+  border: 17px solid rgba(31, 184, 192, 0.24);
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
+}
+
+.schedule-clock__vertical {
+  position: absolute;
+
+  width: 17px;
+  height: 74px;
+
+  top: 39px;
+  left: 73px;
+
+  border-radius: 20px;
+
+  background: rgba(31, 184, 192, 0.24);
+}
+
+.schedule-clock__diagonal {
+  position: absolute;
+
+  width: 75px;
+  height: 17px;
+
+  top: 106px;
+  left: 76px;
+
+  border-radius: 20px;
+
+  background: rgba(31, 184, 192, 0.24);
+
+  transform: rotate(29deg);
+
+  transform-origin: left center;
+}
+
+
+/* =========================================================
+   CENTER WOMAN IMAGE
+========================================================= */
+
+.schedule-photo--woman {
+  height: 266px;
+}
+
+.schedule-photo--woman img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   RIGHT TOP IMAGE
+========================================================= */
+
+.schedule-photo--laptop {
+  height: 218px;
+}
+
+.schedule-photo--laptop img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   YOUR SCHEDULE ANYWHERE
+   FIGMA: 367 × 397
+========================================================= */
+
+.schedule-card--anywhere {
+  height: 397px;
+
+  padding: 72px 26px;
+
+  background: rgba(224, 245, 252, 0.55);
+}
+
+.schedule-card--anywhere h3 {
+  position: relative;
+
+  z-index: 5;
+
+  color: #000000;
+}
+
+
+/* =========================================================
+   MAN WITH MOBILE
+========================================================= */
+
+.schedule-anywhere-person {
+  position: absolute;
+
+  width: 226px;
+  max-width: none;
+  height: auto;
+
+  right: -127px;
+  bottom: -4px;
+
+  display: block;
+
+  transform: scale(2.3);
+  transform-origin: bottom right;
+
+  z-index: 2;
+}
+
+/* =========================================================
+   MAN MOBILE - ACTUAL PATTERN IMAGE
+========================================================= */
+
+.schedule-anywhere-pattern {
+  position: absolute;
+
+  right: -8px;
+  bottom: -7px;
+
+  width: 160px;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  opacity: 0.5;
+  
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   EASY FOR EVERYONE
+========================================================= */
+
+.schedule-card--everyone {
+  height: 117px;
+
+  padding: 20px 25px;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 34px;
+
+  background: #046363;
+}
+
+.schedule-card--everyone h3 {
+  flex-shrink: 0;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+
+  color: #ffffff;
+}
+
+.schedule-card--everyone p {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.schedule-simple__cta {
+  width: 100%;
+
+  margin-top: 88px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.schedule-simple__cta button {
+  width: 213px;
+  height: 51px;
+
+  padding: 12px 24px;
+
+  box-sizing: border-box;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: #183336;
+
+  font-family: var(--font-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+
+  letter-spacing: 0;
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.schedule-simple__cta button:hover {
+  background: #046363;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .schedule-simple__inner {
+    height: auto;
+
+    padding: 90px 24px;
+  }
+
+  .schedule-bento {
+    width: 100%;
+    height: auto;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .schedule-bento__column,
+  .schedule-card,
+  .schedule-photo {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .schedule-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .schedule-bento__column:last-child {
+    grid-column: 1 / -1;
+
+    width: 50%;
+
+    margin: 0 auto;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .schedule-simple__inner {
+    padding: 70px 20px;
+  }
+
+  .schedule-simple__header {
+    width: 100%;
+  }
+
+  .schedule-simple__header h2 {
+    width: 100%;
+
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .schedule-simple__header h2 br {
+    display: none;
+  }
+
+  .schedule-simple__header p {
+    width: 100%;
+
+    margin-top: 10px;
+
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .schedule-bento {
+    margin-top: 60px;
+
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-bento__column,
+  .schedule-bento__column:last-child {
+    width: 100%;
+
+    height: auto;
+
+    grid-column: auto;
+
+    margin: 0;
+  }
+
+  .schedule-card,
+  .schedule-photo {
+    width: 100%;
+  }
+
+  .schedule-simple__cta {
+    margin-top: 55px;
+  }
+}
+/* =========================================================
+   WHY MANAGE MULTIPLE CALENDARS
+========================================================= */
+
+.manage-calendars {
+  width: 100%;
+  background: #ffffff;
+  font-family: var(--font-primary);
+}
+
+.manage-calendars__inner {
+  position: relative;
+
+  width: 100%;
+  max-width: 1440px;
+  height: 1249px;
+
+  margin: 0 auto;
+
+  padding-top: 90.91px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+
+   FIGMA:
+   width: 682px
+   height: 200px
+   top: 90.91px
+   left: 379px
+   gap: 24px
+========================================================= */
+
+.manage-calendars__header {
+  width: 682px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 24px;
+
+  text-align: center;
+}
+
+.manage-calendars__header h2 {
+  width: 682px;
+  height: 120px;
+
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 60px;
+
+  letter-spacing: 0;
+
+  text-align: center;
+
+  color: #183336;
+}
+
+.manage-calendars__header p {
+  width: 680px;
+
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+
+  letter-spacing: 0;
+
+  text-align: center;
+
+  color: #424d4f;
+}
+
+
+/* =========================================================
+   FLOW AREA
+========================================================= */
+
+.manage-calendars__flow {
+  position: relative;
+
+  width: 1095.83px;
+
+  margin: 64px auto 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   CALENDAR APP ROW
+
+   FIGMA:
+   width: 1095.83px
+   gap: 32px
+========================================================= */
+
+.manage-calendars__apps {
+  position: relative;
+
+  width: 1095.83px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 32px;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   CALENDAR CHIP
+
+   FIGMA:
+   249.75 × 61.75
+   radius: 7px
+   border: #1FB8C0
+========================================================= */
+
+.manage-calendar-chip {
+  width: 249.75px;
+  height: 61.75px;
+
+  padding: 8px 14px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #1fb8c0;
+
+  border-radius: 7px;
+
+  background: #f9f9f9;
+
+  transform: rotate(0.29deg);
+}
+
+
+/* =========================================================
+   CALENDAR ICONS
+========================================================= */
+
+.manage-calendar-chip img {
+  width: 46px;
+  height: 46px;
+
+  max-width: none;
+
+  flex-shrink: 0;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+.manage-calendar-chip span {
+  font-family: var(--font-primary);
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 19.8px;
+
+  letter-spacing: 0;
+
+  color: #046363;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FIGMA CONNECTOR ARROWS
+
+   FIGMA:
+   width: 853.82px
+   height: 164.37px
+   dashed 4 / 4
+========================================================= */
+
+.manage-connectors {
+  position: relative;
+
+  width: 853.82px;
+  height: 164.37px;
+
+  margin-top: 0;
+
+  flex-shrink: 0;
+
+  z-index: 2;
+}
+
+.manage-connectors svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  overflow: visible;
+}
+
+.manage-connector-path {
+  fill: none;
+
+  stroke: #8a8a8a;
+
+  stroke-width: 2;
+
+  stroke-dasharray: 4 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  opacity: 0.75;
+}
+
+
+/* =========================================================
+   AEON SCHEDULER
+
+   FIGMA:
+   width: 224px
+   height: 45.22px
+   bg: #127A66
+========================================================= */
+
+.manage-scheduler {
+  position: absolute;
+
+  top: 226px;
+  left: 50%;
+
+  width: 224px;
+  height: 45.22px;
+
+  transform: translateX(-50%) rotate(0.24deg);
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 9.43px;
+
+  box-sizing: border-box;
+
+  border-radius: 11.31px;
+
+  background: #127a66;
+
+  font-family: var(--font-primary);
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 19.8px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+
+  z-index: 4;
+}
+
+
+/* =========================================================
+   AEON SCHEDULER TO DASHBOARD ARROW
+========================================================= */
+
+
+.manage-scheduler-arrow {
+  position: absolute;
+
+  top: 276px;
+  left: 50%;
+
+  width: 30px;
+  height: 100px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+.manage-scheduler-arrow__line {
+  position: relative;
+
+  display: block;
+
+  width: 1.5px;
+  height: 60px; 
+
+  background: #87999b;
+}
+
+.manage-scheduler-arrow__line::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 1px;
+
+  width: 14px;
+  height: 14px;
+
+  border-right: 2px solid #87999b;
+  border-bottom: 2px solid #87999b;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+}
+
+
+/* =========================================================
+   VISUAL AREA
+========================================================= */
+
+.manage-visual {
+  position: relative;
+
+  width: 1000px;
+  height: 520px;
+
+  margin: 116px auto 0;
+}
+
+
+/* =========================================================
+   CALENDAR DASHBOARD IMAGE
+========================================================= */
+
+/* =========================================================
+   CALENDAR DASHBOARD IMAGE
+========================================================= */
+
+.manage-dashboard {
+  position: absolute;
+
+  width: 1020px;
+  height: 485px;
+
+  top: -35px;
+  left: 50%;
+
+  transform: translateX(-50%) scale(1.2);
+  transform-origin: center top;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+}
+
+.manage-dashboard__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   LEFT DARK CARD
+
+   FIGMA:
+   width: 315px
+   height: 228px
+   bg: black 80%
+========================================================= */
+
+.manage-info-card--left {
+  position: absolute;
+
+  width: 315px;
+  height: 228px;
+
+  left: -120px;
+  top: 196px;
+
+  padding: 25px 24px;
+
+  box-sizing: border-box;
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  transform: scale(1);
+  transform-origin: center;
+
+  z-index: 5;
+}
+.manage-info-card--left h3 {
+  width: 260.98px;
+
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+}
+
+.manage-info-card--left p {
+  width: 260.98px;
+
+  margin: 8px 0 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+
+  letter-spacing: 0;
+
+  color: #eaecec;
+}
+
+.manage-info-card--left button {
+  width: 176px;
+  height: 44px;
+
+  margin-top: 10px;
+
+  padding: 12px 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #00ead8;
+
+  font-family: var(--font-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+
+  letter-spacing: 0;
+
+  color: #183336;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.manage-info-card--left button:hover {
+  transform: translateY(-2px);
+
+  background: #1fb8c0;
+}
+
+
+/* =========================================================
+   RIGHT GREEN CARD
+
+   FIGMA:
+   303 × 220
+   bg #004B32
+========================================================= */
+
+.manage-info-card--right {
+  position: absolute;
+
+  width: 303px;
+  height: 220px;
+
+  top: 68px;
+  right: -88px;
+
+  padding: 32px 24px;
+
+  box-sizing: border-box;
+
+  border-radius: 14px;
+
+  background: #004b32;
+
+  box-shadow:
+    0 8px 24px rgba(4, 99, 99, 0.25);
+
+  transform: scale(0.9);
+  transform-origin: center;
+
+  z-index: 5;
+}
+
+.manage-info-card--right ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.manage-info-card--right li {
+  position: relative;
+
+  padding-left: 22px;
+
+  font-family: var(--font-primary);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+}
+
+.manage-info-card--right li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  font-size: 11px;
+
+  color: #00ead8;
+}
+
+
+/* =========================================================
+   WOMAN IMAGE
+
+   FIGMA:
+   approx 607.94 × 335.99
+========================================================= */
+
+.manage-calendar-woman {
+  position: absolute;
+
+  width: 607.94px;
+  height: 335.99px;
+
+  left: 50%;
+  bottom: -40px;
+
+  transform:
+    translateX(-50%)
+    rotate(0.24deg);
+
+  display: block;
+
+  max-width: none;
+
+  object-fit: contain;
+  object-position: bottom center;
+
+  z-index: 6;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .manage-calendars__inner {
+    height: auto;
+
+    padding:
+      90px
+      24px
+      100px;
+  }
+
+  .manage-calendars__flow {
+    width: 100%;
+  }
+
+  .manage-calendars__apps {
+    width: 100%;
+
+    gap: 18px;
+  }
+
+  .manage-calendar-chip {
+    width: calc((100% - 54px) / 4);
+  }
+
+  .manage-connectors {
+    width: 80%;
+  }
+
+  .manage-visual {
+    width: min(100%, 1000px);
+  }
+
+  .manage-dashboard {
+    width: 90%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .manage-calendars__header,
+  .manage-calendars__header h2,
+  .manage-calendars__header p {
+    width: 100%;
+  }
+
+  .manage-calendars__apps {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  .manage-calendar-chip {
+    width: 100%;
+  }
+
+  .manage-connectors {
+    display: none;
+  }
+
+  .manage-scheduler {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    margin-top: 30px;
+
+    transform: none;
+  }
+
+  .manage-scheduler-arrow {
+    display: none;
+    
+  }
+
+  .manage-visual {
+    height: 600px;
+
+    margin-top: 50px;
+  }
+
+  .manage-dashboard {
+    width: 100%;
+  }
+
+  .manage-info-card--left {
+    left: 20px;
+  }
+
+  .manage-info-card--right {
+    right: 20px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .manage-calendars__inner {
+    padding:
+      70px
+      20px
+      80px;
+  }
+
+  .manage-calendars__header {
+    gap: 16px;
+  }
+
+  .manage-calendars__header h2 {
+    height: auto;
+
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .manage-calendars__header h2 br {
+    display: none;
+  }
+
+  .manage-calendars__header p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .manage-calendars__header p br {
+    display: none;
+  }
+
+  .manage-calendars__apps {
+    grid-template-columns: 1fr;
+
+    margin-top: 40px;
+  }
+
+  .manage-calendar-chip {
+    height: 58px;
+
+    padding: 7px 12px;
+
+    gap: 10px;
+  }
+
+  .manage-calendar-chip img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .manage-calendar-chip span {
+    font-size: 17px;
+  }
+
+  .manage-visual {
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .manage-dashboard {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    left: auto;
+    top: auto;
+
+    transform: none;
+
+    aspect-ratio: 1909 / 909;
+  }
+
+  .manage-info-card--left,
+  .manage-info-card--right {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    inset: auto;
+
+    z-index: 2;
+  }
+
+  .manage-calendar-woman {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    left: auto;
+    bottom: auto;
+
+    transform: none;
+  }
+}
+ 
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.scheduler-footer {
+  width: 100%;
+  height: 376px;
+
+  background: rgba(0, 0, 0, 0.9);
+
+  font-family: var(--font-primary);
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.scheduler-footer__inner {
+  width: 1140px;
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding-top: 51px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOP CONTENT
+========================================================= */
+
+.scheduler-footer__top {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    260.79px
+    334.85px
+    105px
+    130px;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   LEFT DESCRIPTION
+========================================================= */
+
+.scheduler-footer__about {
+  width: 260.79px;
+}
+
+.scheduler-footer__description {
+  width: 240.79px;
+
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 200;
+
+  line-height: 25px;
+
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.scheduler-footer__socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 24px;
+}
+
+.scheduler-footer__socials a {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 50%;
+
+  background: #424d4f;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.scheduler-footer__socials a svg {
+  width: 14px;
+  height: 14px;
+
+  display: block;
+
+  color: #ffffff;
+}
+
+.scheduler-footer__socials a:hover {
+  opacity: 0.8;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CONTACT INFO
+========================================================= */
+
+.scheduler-footer__contact {
+  width: 334.85px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.scheduler-footer__contact-row {
+  width: 100%;
+  min-height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.scheduler-footer__contact-row:first-child {
+  min-height: 50px;
+
+  align-items: flex-start;
+}
+
+.scheduler-footer__contact-icon {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.scheduler-footer__contact-icon svg {
+  width: 20px;
+  height: 20px;
+
+  display: block;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scheduler-footer__contact-row p,
+.scheduler-footer__contact-row a {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 200;
+
+  line-height: 25px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   FOOTER NAV
+========================================================= */
+
+.scheduler-footer__nav {
+  width: 105px;
+  height: 225px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.scheduler-footer__nav a {
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 200;
+
+  line-height: 25px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.scheduler-footer__brand {
+  width: 130px;
+  height: 118.59px;
+
+  padding-top: 39px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.scheduler-footer__brand img {
+  width: 129.95px;
+  height: 118.59px;
+
+  max-width: none;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.scheduler-footer__divider {
+  width: 1139.84px;
+  height: 1px;
+
+  margin-top: 10px;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   BOTTOM ROW
+========================================================= */
+
+.scheduler-footer__bottom {
+  width: 100%;
+
+  margin-top: 16px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.scheduler-footer__bottom p {
+  margin: 0;
+
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 200;
+
+  line-height: 25px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   PRIVACY / TERMS
+========================================================= */
+
+.scheduler-footer__legal {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.scheduler-footer__legal a {
+  font-family: var(--font-primary);
+
+  font-size: 16px;
+  font-weight: 200;
+
+  line-height: 25px;
+
+  letter-spacing: 0;
+
+  color: #ffffff;
+
+  text-decoration: none;
+}
+
+.scheduler-footer__legal span {
+  width: 1px;
+  height: 22px;
+
+  display: block;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   GENERAL HOVER
+========================================================= */
+
+.scheduler-footer a {
+  transition: opacity 0.2s ease;
+}
+
+.scheduler-footer a:hover {
+  opacity: 0.72;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .scheduler-footer {
+    height: auto;
+  }
+
+  .scheduler-footer__inner {
+    width: 100%;
+    height: auto;
+
+    padding:
+      50px
+      40px
+      30px;
+  }
+
+  .scheduler-footer__top {
+    grid-template-columns:
+      1fr
+      1.2fr
+      0.6fr
+      0.7fr;
+
+    gap: 40px;
+  }
+
+  .scheduler-footer__divider {
+    width: 100%;
+
+    margin-top: 30px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .scheduler-footer__top {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px 30px;
+  }
+
+  .scheduler-footer__brand {
+    width: 130px;
+    height: auto;
+
+    padding-top: 0;
+
+    justify-content: flex-start;
+  }
+
+  .scheduler-footer__nav {
+    height: auto;
+  }
+
+  .scheduler-footer__divider {
+    margin-top: 50px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .scheduler-footer__inner {
+    padding:
+      45px
+      20px
+      30px;
+  }
+
+  .scheduler-footer__top {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .scheduler-footer__about,
+  .scheduler-footer__contact,
+  .scheduler-footer__nav,
+  .scheduler-footer__brand {
+    width: 100%;
+  }
+
+  .scheduler-footer__nav {
+    height: auto;
+
+    gap: 14px;
+  }
+
+  .scheduler-footer__brand {
+    height: auto;
+
+    justify-content: flex-start;
+
+    padding-top: 0;
+  }
+
+  .scheduler-footer__brand img {
+    width: 129.95px;
+    height: 118.59px;
+  }
+
+  .scheduler-footer__divider {
+    margin-top: 40px;
+  }
+
+  .scheduler-footer__bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  .scheduler-footer__legal {
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+}
