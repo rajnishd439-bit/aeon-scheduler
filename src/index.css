@@ -2550,58 +2550,49 @@ a {
 ========================================================= */
 
 @media (max-width: 480px) {
-  .schedule-anywhere-section {
-    padding: 48px 0;
-  }
-
-  .schedule-anywhere-layout {
-    width: calc(100% - 24px);
-  }
-
-  .schedule-anywhere-visual {
-    height: 520px;
-  }
-
-  .schedule-anywhere-heading {
-    font-size: 32px;
-    line-height: 40px;
-  }
-
-  .schedule-anywhere-description {
-    font-size: 16px;
-    line-height: 25px;
-  }
-
   .schedule-anywhere-form {
-    height: auto;
+    width: 100%;
+    height: 52px;
 
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
 
-    overflow: visible;
+    overflow: hidden;
 
-    border: 0;
-    background: transparent;
+    border: 1px solid rgba(66, 77, 79, 0.35);
+    border-radius: 10px;
+
+    background: #ffffff;
   }
 
   .schedule-anywhere-input {
-    width: 100%;
-    height: 54px;
+    flex: 1;
+    min-width: 0;
 
-    padding: 0 18px;
+    width: auto;
+    height: 100%;
 
-    border: 1px solid rgba(66, 77, 79, 0.35);
-    border-radius: var(--schedule-form-radius);
+    padding: 0 12px;
 
-    box-sizing: border-box;
+    border: 0;
+    border-radius: 0;
+
+    font-size: 14px;
+
+    background: #ffffff;
   }
 
   .schedule-anywhere-button {
-    width: 100%;
-    height: 54px;
+    width: 112px;
+    height: 100%;
 
-    margin-top: 12px;
+    margin-top: 0;
 
-    border-radius: var(--schedule-form-radius);
+    flex-shrink: 0;
+
+    border-radius: 0;
+
+    font-size: 14px;
   }
 }
   /* =========================================================
@@ -8033,62 +8024,430 @@ a {
    RESPONSIVE - MOBILE
 ========================================================= */
 
+
 @media (max-width: 600px) {
+  .scheduler-footer {
+    height: auto;
+
+   
+  }
 
   .scheduler-footer__inner {
-    padding:
-      45px
-      20px
-      30px;
+    width: 100%;
+    height: auto;
+
+    padding: 42px 20px 24px;
   }
 
   .scheduler-footer__top {
-    grid-template-columns: 1fr;
-
-    gap: 40px;
-  }
-
-  .scheduler-footer__about,
-  .scheduler-footer__contact,
-  .scheduler-footer__nav,
-  .scheduler-footer__brand {
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
   }
+
+  /* =========================
+     ABOUT
+  ========================= */
+
+  .scheduler-footer__about {
+    width: 100%;
+    max-width: 330px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .scheduler-footer__description {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 22px;
+
+    text-align: center;
+  }
+
+  /* =========================
+     SOCIALS
+  ========================= */
+
+  .scheduler-footer__socials {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .scheduler-footer__socials a {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* =========================
+     CONTACT
+  ========================= */
+
+  .scheduler-footer__contact {
+    width: 100%;
+    max-width: 330px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .scheduler-footer__contact-row,
+  .scheduler-footer__contact-row:first-child {
+    width: 100%;
+    min-height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    text-align: center;
+  }
+
+  .scheduler-footer__contact-icon {
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
+  }
+
+  .scheduler-footer__contact-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .scheduler-footer__contact-row p,
+  .scheduler-footer__contact-row a {
+    font-size: 13px;
+    line-height: 20px;
+
+    text-align: center;
+  }
+
+  /* =========================
+     NAVIGATION
+  ========================= */
 
   .scheduler-footer__nav {
+    width: 100%;
     height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     gap: 14px;
+
+    text-align: center;
   }
 
+  .scheduler-footer__nav a {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /* =========================
+     LOGO
+  ========================= */
+
   .scheduler-footer__brand {
+    width: 100%;
     height: auto;
 
-    justify-content: flex-start;
-
     padding-top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .scheduler-footer__brand img {
-    width: 129.95px;
-    height: 118.59px;
+    width: 105px;
+    height: auto;
+
+    max-width: 100%;
   }
+
+  /* =========================
+     DIVIDER
+  ========================= */
 
   .scheduler-footer__divider {
-    margin-top: 40px;
+    width: 100%;
+
+    margin-top: 24px;
   }
 
+  /* =========================
+     BOTTOM
+  ========================= */
+
   .scheduler-footer__bottom {
+    width: 100%;
+
+    margin-top: 18px;
+
+    display: flex;
     flex-direction: column;
+    align-items: center;
 
-    align-items: flex-start;
+    gap: 10px;
 
-    gap: 16px;
+    text-align: center;
+  }
+
+  .scheduler-footer__bottom p {
+    font-size: 12px;
+    line-height: 18px;
+
+    text-align: center;
   }
 
   .scheduler-footer__legal {
-    gap: 12px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
 
     flex-wrap: wrap;
+  }
+
+  .scheduler-footer__legal a {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+/* ============================================================
+   HERO RESPONSIVE
+============================================================ */
+
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: auto;
+    padding-bottom: 50px;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    width: calc(100% - 32px);
+    padding-top: 48px;
+    gap: 28px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
+  .hero-heading {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 42px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+
+    text-align: center;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 360px;
+
+    margin-top: 18px;
+
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0;
+
+    text-align: center;
+  }
+
+  .hero-form-wrapper {
+    width: 100%;
+    max-width: 380px;
+    padding: 0;
+  }
+
+  .hero-form {
+    width: 100%;
+    height: 54px;
+  }
+
+  .hero-input {
+    min-width: 0;
+
+    padding-inline: 14px;
+
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .hero-submit {
+    width: 125px;
+
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  /* ============================================================
+     HERO CARDS STACK
+  ============================================================ */
+
+  .hero-visual {
+    width: calc(100% - 32px);
+    min-height: auto;
+
+    margin: 18px auto 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
+
+    overflow: visible;
+  }
+
+  .hero-visual-calendar {
+    position: static;
+
+    width: 100%;
+    max-width: 370px;
+    height: auto;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+
+    transform: none;
+  }
+
+  .hero-visual-booking {
+    position: static;
+
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+
+    opacity: 1;
+
+    object-fit: contain;
+
+    transform: none;
+  }
+
+  .hero-visual-recording {
+    position: static;
+
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+
+    opacity: 1;
+
+    object-fit: contain;
+
+    transform: none;
+  }
+
+  .hero-section::before {
+    background:
+      radial-gradient(
+        ellipse 70% 90% at 50% 42%,
+        rgba(164, 228, 231, 0.42) 0%,
+        rgba(164, 228, 231, 0.22) 45%,
+        rgba(255, 255, 255, 0.9) 80%,
+        #ffffff 100%
+      );
+  }
+}
+
+
+/* ============================================================
+   HERO SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+  .hero-content {
+    width: calc(100% - 28px);
+    padding-top: 38px;
+  }
+
+  .hero-heading {
+    font-size: 38px;
+    line-height: 1.08;
+    letter-spacing: -1.2px;
+  }
+
+  .hero-description {
+    max-width: 330px;
+
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .hero-form-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-form {
+    height: 52px;
+  }
+
+  .hero-input {
+    padding-inline: 12px;
+
+    font-size: 14px;
+  }
+
+  .hero-submit {
+    width: 112px;
+
+    font-size: 15px;
+  }
+
+  .hero-visual {
+    width: calc(100% - 24px);
+    min-height: auto;
+
+    margin-top: 16px;
+
+    gap: 18px;
+  }
+
+  .hero-visual-calendar {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .hero-visual-booking {
+    width: 100%;
+    max-width: 325px;
+  }
+
+  .hero-visual-recording {
+    width: 100%;
+    max-width: 325px;
   }
 }
